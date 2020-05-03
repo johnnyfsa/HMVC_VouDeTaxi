@@ -1,8 +1,6 @@
 package Teste;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
 import model.Usuario;
@@ -17,7 +15,6 @@ Usuario usuario = new Usuario();
 		
 		testando = usuario.getNome().isEmpty();
 		assertTrue(testando);
-		fail("Not yet implemented");
 	}
 
 }
