@@ -6,6 +6,14 @@ public class Usuario {
 	private String Usuario;
 	private String Senha;
 	
+	
+	public Usuario() 
+	{
+		setNome("");
+		setSenha("");
+		setUsuario("");
+	}
+	
 	public String getNome() {
 		return Nome;
 	}
