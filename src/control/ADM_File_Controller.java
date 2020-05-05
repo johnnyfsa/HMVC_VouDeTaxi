@@ -76,7 +76,7 @@ public class ADM_File_Controller extends File_Controller
 	{
 		JSONObject jsonObject;
         JSONArray jsonArray;
-		File file = new File("taxis.json"); 
+		File file = new File("adm.json"); 
 		 JSONParser parser = new JSONParser();
 		
 		try 
