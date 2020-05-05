@@ -1,12 +1,24 @@
 package model;
 
-public class Taxi_model extends Usuario {
+import java.util.ArrayList;
+
+public class Taxi_Model extends Usuario_Model {
 	
 	
 	private String cpf;
 	private String ModeloCarro;
 	private String CorCarro;
 	private String Placa;
+	private ArrayList<Corrida_Model> Corridas;
+	
+	public Taxi_Model() 
+	{
+		cpf = "";
+		ModeloCarro= "";
+		CorCarro = "";
+		Placa = "";
+		Corridas = new ArrayList<Corrida_Model>();
+	}
 	
 	
 	public String getCpf() {
@@ -32,6 +44,12 @@ public class Taxi_model extends Usuario {
 	}
 	public void setPlaca(String placa) {
 		Placa = placa;
+	}
+	public ArrayList<Corrida_Model> getCorridas() {
+		return Corridas;
+	}
+	public void setCorridas(ArrayList<Corrida_Model> corridas) {
+		Corridas = corridas;
 	}
 
 }

@@ -1,13 +1,13 @@
 package model;
 
-public class Usuario {
+public class Usuario_Model {
 	
 	private String Nome;
 	private String Usuario;
 	private String Senha;
 	
 	
-	public Usuario() 
+	public Usuario_Model() 
 	{
 		setNome("");
 		setSenha("");

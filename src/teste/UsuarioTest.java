@@ -3,7 +3,7 @@ package teste;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 
-import model.Usuario;
+import model.Usuario_Model;
 
 class UsuarioTest {
 
@@ -11,7 +11,7 @@ class UsuarioTest {
 	@Test
 	
 	void test() {
-Usuario usuario = new Usuario();
+Usuario_Model usuario = new Usuario_Model();
 		
 		testando = usuario.getNome().isEmpty();
 		assertTrue(testando);

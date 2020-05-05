@@ -13,11 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import model.Usuario;
+import model.Usuario_Model;
 
 public class Taxi_File_Controller extends File_Controller 
 {
-	private ArrayList<Usuario> L;
+	private ArrayList<Usuario_Model> L;
 	
 	private void extracted() 
 	{
@@ -25,7 +25,7 @@ public class Taxi_File_Controller extends File_Controller
 	
 	public void jsonRead()
 	{
-		L = new ArrayList<Usuario>();
+		L = new ArrayList<Usuario_Model>();
 	   	JSONObject jsonObject;
         JSONArray jsonArray;
         
@@ -49,7 +49,7 @@ public class Taxi_File_Controller extends File_Controller
   
             while(externalIterator.hasNext()) 
             {
-            	Usuario user = new Usuario();
+            	Usuario_Model user = new Usuario_Model();
             	jsonObject = externalIterator.next();
             	 user.setNome((String) jsonObject.get("Nome"));
                  user.setUsuario((String) jsonObject.get("Usuario"));
@@ -81,7 +81,7 @@ public class Taxi_File_Controller extends File_Controller
 	        	
 	}
 	
-	public ArrayList<Usuario> getList()
+	public ArrayList<Usuario_Model> getList()
 	{
 		return L;
 	}

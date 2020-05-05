@@ -11,15 +11,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import model.Usuario;
+import model.Usuario_Model;
 
 public class Cliente_File_Controller extends File_Controller {
 	
-	private ArrayList<Usuario> L;
+	private ArrayList<Usuario_Model> L;
 	
 	public void jsonRead() 
 	{
-			L = new ArrayList<Usuario>();
+			L = new ArrayList<Usuario_Model>();
 		   	JSONObject jsonObject;
 	        JSONArray jsonArray;
 	        //Cria o parse de tratamento
@@ -34,7 +34,7 @@ public class Cliente_File_Controller extends File_Controller {
 	        	}
 	        	else
 	        	{
-	        		//o java não aceita resetar a filereader pra posição inicial, então cria outro filereader
+	        		//o java nï¿½o aceita resetar a filereader pra posiï¿½ï¿½o inicial, entï¿½o cria outro filereader
 	        		file = new FileReader("clientes.json");
 	        	}
 	        	jsonArray = (JSONArray) parser.parse(file);
@@ -42,7 +42,7 @@ public class Cliente_File_Controller extends File_Controller {
 	  
 	            while(externalIterator.hasNext()) 
 	            {
-	            	Usuario user = new Usuario();
+	            	Usuario_Model user = new Usuario_Model();
 	            	jsonObject = externalIterator.next();
 	            	 user.setNome((String) jsonObject.get("Nome"));
 	                 user.setUsuario((String) jsonObject.get("Usuario"));
@@ -51,7 +51,7 @@ public class Cliente_File_Controller extends File_Controller {
 	                 L.add(user);
 	            }
 	        } 
-	        //Trata as exceptions que podem ser lançadas no decorrer do processo
+	        //Trata as exceptions que podem ser lanï¿½adas no decorrer do processo
 	        catch (FileNotFoundException e) {
 	            e.printStackTrace();
 	        } catch (IOException e) {
@@ -70,7 +70,7 @@ public class Cliente_File_Controller extends File_Controller {
 		
 	}
 	
-	public ArrayList<Usuario> getList()
+	public ArrayList<Usuario_Model> getList()
 	{
 		return L;
 	}
