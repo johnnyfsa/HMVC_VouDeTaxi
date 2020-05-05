@@ -74,10 +74,30 @@ public class Taxi_File_Controller extends File_Controller
 	}
 	
 	
-	public void jsonWrite() 
+	public void jsonWrite(String dados) 
 	{
+		JSONObject jsonObject;
+        JSONArray jsonArray;
+		File file = new File("taxis.json"); 
+		 JSONParser parser = new JSONParser();
 		
-		 
+		try 
+		{
+			if(file.exists()) 
+			{
+				 FileWriter writer = new FileWriter(file);
+				 writer.write(dados);
+		         writer.close();
+		         
+		         
+				 
+			}
+		}catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+		
 	        	
 	}
 	
