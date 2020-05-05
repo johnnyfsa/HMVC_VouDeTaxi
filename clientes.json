@@ -1,12 +1,1 @@
-[
-	{
-		"Nome": "Joao",
-		"Usuario": "biscoito",
-		"Senha": "biscoito123"
-	},
-	{
-		"Nome": "Maria",
-		"Usuario": "bolacha",
-		"Senha": "bolacha123"
-	}
-]
+[{"Usuario":"bolo","Senha":"bolo123","CPF":"teste3","Nome":"José"}]

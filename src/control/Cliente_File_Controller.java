@@ -2,6 +2,7 @@ package control;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,15 +12,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import model.Usuario_Model;
+import model.Cliente_Model;
 
 public class Cliente_File_Controller extends File_Controller {
 	
-	private ArrayList<Usuario_Model> L;
+	private ArrayList<Cliente_Model> L;
+	
+	
+	public Cliente_File_Controller() 
+	{
+		L = new ArrayList<Cliente_Model>();
+	}
 	
 	public void jsonRead() 
 	{
-			L = new ArrayList<Usuario_Model>();
+			
 		   	JSONObject jsonObject;
 	        JSONArray jsonArray;
 	        //Cria o parse de tratamento
@@ -42,13 +49,14 @@ public class Cliente_File_Controller extends File_Controller {
 	  
 	            while(externalIterator.hasNext()) 
 	            {
-	            	Usuario_Model user = new Usuario_Model();
+	            	Cliente_Model aux = new Cliente_Model();
 	            	jsonObject = externalIterator.next();
-	            	 user.setNome((String) jsonObject.get("Nome"));
-	                 user.setUsuario((String) jsonObject.get("Usuario"));
-	                 user.setSenha((String) jsonObject.get("Senha"));
+	            	 aux.setNome((String) jsonObject.get("Nome"));
+	                 aux.setUsuario((String) jsonObject.get("Usuario"));
+	                 aux.setSenha((String) jsonObject.get("Senha"));
+	                 aux.setCpf((String) jsonObject.get("CPF"));
 	                
-	                 L.add(user);
+	                 L.add(aux);
 	            }
 	        } 
 	        //Trata as exceptions que podem ser lan�adas no decorrer do processo
@@ -67,10 +75,38 @@ public class Cliente_File_Controller extends File_Controller {
 	
 	public void jsonWrite() 
 	{
-		
+		//Cria um Objeto JSON
+        JSONArray arrJson = new JSONArray();
+        
+        FileWriter writeFile = null;
+        
+        Iterator<Cliente_Model> clienteIterator = L.iterator();
+        while(clienteIterator.hasNext()) 
+        {
+        	JSONObject jsonObject = new JSONObject();
+        	Cliente_Model aux = new Cliente_Model();
+        	aux = clienteIterator.next();
+        	 //Armazena dados em um Objeto JSON
+        	jsonObject.put("Usuario", aux.getUsuario());
+            jsonObject.put("Nome", aux.getNome());
+            jsonObject.put("Senha", aux.getSenha());
+            jsonObject.put("CPF", aux.getCpf());
+           
+           arrJson.add(jsonObject);
+        }
+         
+        try{
+            writeFile = new FileWriter("clientes.json");
+            //Escreve no arquivo conteudo do Objeto JSON
+            writeFile.write(arrJson.toJSONString());
+            writeFile.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
 	}
 	
-	public ArrayList<Usuario_Model> getList()
+	public ArrayList<Cliente_Model> getList()
 	{
 		return L;
 	}
