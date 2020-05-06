@@ -5,13 +5,14 @@ public class Usuario_Model {
 	private String Nome;
 	private String Usuario;
 	private String Senha;
-	
+	private String cpf;
 	
 	public Usuario_Model() 
 	{
 		setNome("");
 		setSenha("");
 		setUsuario("");
+		
 	}
 	
 	public String getNome() {
@@ -31,6 +32,15 @@ public class Usuario_Model {
 	}
 	public void setSenha(String senha) {
 		Senha = senha;
+	}
+	
+	public String getCpf()
+	{
+		return cpf;
+	}
+	public void setCpf(String cpf) 
+	{
+		this.cpf = cpf;
 	}
 
 }

@@ -1,12 +1,9 @@
 [
 	{
-		"Nome": "Momo",
+		"Nome":  "Momo",
 		"Usuario": "biscoito",
-		"Senha": "biscoito123"
+		"Senha": "biscoito123",
+		"CPF": "12345"
 	},
-	{
-		"Nome": "Maria",
-		"Usuario": "bolacha",
-		"Senha": "bolacha123"
-	}
+	
 ]

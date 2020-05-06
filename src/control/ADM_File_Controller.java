@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import model.Usuario;
+//import model.Usuario;
 import model.Usuario_Model;
 
 public class ADM_File_Controller extends File_Controller
@@ -44,7 +44,7 @@ public class ADM_File_Controller extends File_Controller
         	else
         	{
         		//o java n�o aceita resetar a filereader pra posi��o inicial, ent�o cria outro filereader
-        		file = new FileReader("taxis.json");
+        		file = new FileReader("adm.json");
         	}
         	jsonArray = (JSONArray) parser.parse(file);
         	Iterator<JSONObject> externalIterator = jsonArray.iterator();
