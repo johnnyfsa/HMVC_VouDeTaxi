@@ -16,7 +16,7 @@ import org.json.simple.parser.ParseException;
 //import model.Usuario;
 import model.Usuario_Model;
 
-public class ADM_File_Controller extends File_Controller
+public class ADM_File_Controller 
 {
 	private ArrayList<Usuario_Model> L;
 	

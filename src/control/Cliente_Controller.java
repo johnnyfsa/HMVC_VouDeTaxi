@@ -13,18 +13,18 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import model.Cliente_Model;
+import model.Usuario_Model;
 
-public class Cliente_File_Controller  {
+public class Cliente_Controller extends Usuario_Controller
+{
+	private static ArrayList<Cliente_Model> L;
 	
-	private ArrayList<Cliente_Model> L;
-	
-	
-	public Cliente_File_Controller() 
+	private static void extracted() 
 	{
-		L = new ArrayList<Cliente_Model>();
+		
 	}
 	
-	public void jsonRead() 
+	public static void jsonRead() 
 	{
 			
 		   	JSONObject jsonObject;
@@ -69,11 +69,8 @@ public class Cliente_File_Controller  {
 	            e.printStackTrace();
 	        } 
 	}
-
-	private void extracted() {
-	}
 	
-	public void jsonWrite() 
+	public static void jsonWrite() 
 	{
 		//Cria um Objeto JSON
         JSONArray arrJson = new JSONArray();
@@ -106,7 +103,23 @@ public class Cliente_File_Controller  {
         }
 	}
 	
-	public ArrayList<Cliente_Model> getList()
+	public static void adicionar(String nome, String usuario, String senha, String cpf)
+	{
+		jsonRead();
+		
+		
+		
+	}
+	
+	public static Usuario_Model busca(String nome, String usuario, String cpf) 
+	{
+		Cliente_Model m = new Cliente_Model();
+		
+		
+		return m;
+	}
+	
+	public static ArrayList<Cliente_Model> getList()
 	{
 		return L;
 	}

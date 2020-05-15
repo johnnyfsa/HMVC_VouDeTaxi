@@ -17,7 +17,7 @@ import model.Cliente_Model;
 import model.Taxi_Model;
 import model.Usuario_Model;
 
-public class Taxi_File_Controller extends File_Controller 
+public class Taxi_File_Controller 
 {
 	
 	private ArrayList<Taxi_Model> L;
