@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import model.Cliente_Model;
+import model.Pessoa_Fisica;
 import model.Taxi_Model;
 import model.Usuario_Model;
 

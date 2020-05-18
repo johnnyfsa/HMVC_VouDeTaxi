@@ -1,5 +1,6 @@
 package model;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Corrida_Model {
@@ -7,10 +8,13 @@ public class Corrida_Model {
 	private int[] partida;
 	private int[] chegada;
 	private LocalDateTime horario;
-	private float distancia;
-	private String cliente;
-	private String taxi;
+	private double distancia;
+	private Pessoa_Fisica cliente;
+	private Taxi_Model taxi;
 	private boolean status;
+	private int identificador;
+	private float avaliacao;
+	private long tempo; // o tempo tá sendo gerado em minutos nesse caso, se a corrida durar horas, a gente vai precisar fazer uma conversão
 	
 	public Corrida_Model() 
 	{
@@ -18,9 +22,12 @@ public class Corrida_Model {
 		chegada = new int[2];
 		horario = LocalDateTime.now();
 		distancia = 0;
-		cliente = "";
-		taxi = "";
+		cliente = new Pessoa_Fisica();
+		taxi = new Taxi_Model();
 		status = true;
+		identificador= 0;
+		avaliacao = 0;
+		tempo =0;
 	}
 	
 	public int[] getPartida() {
@@ -35,7 +42,7 @@ public class Corrida_Model {
 	public void setChegada(int[] chegada) {
 		this.chegada = chegada;
 	}
-	public float getDistancia() {
+	public double getDistancia() {
 		return distancia;
 	}
 	public void setDistancia(float distancia) {
@@ -47,16 +54,16 @@ public class Corrida_Model {
 	public void setHorario(LocalDateTime horario) {
 		this.horario = horario;
 	}
-	public String getCliente() {
+	public Pessoa_Fisica getCliente() {
 		return cliente;
 	}
-	public void setCliente(String cliente) {
+	public void setCliente(Pessoa_Fisica cliente) {
 		this.cliente = cliente;
 	}
-	public String getTaxi() {
+	public Taxi_Model getTaxi() {
 		return taxi;
 	}
-	public void setTaxi(String taxi) {
+	public void setTaxi(Taxi_Model taxi) {
 		this.taxi = taxi;
 	}
 	public boolean getStatus() {
@@ -66,4 +73,44 @@ public class Corrida_Model {
 		this.status = status;
 	}
 
+	public int getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(int identificador) {
+		this.identificador = identificador;
+	}
+
+	public float getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(float avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+	
+	public long getTempo() 
+	{
+		return tempo;
+	}
+	
+	public void setTempo(long tempo) 
+	{
+		this.tempo = tempo;
+	}
+	
+	public void calculaTempo(LocalDateTime agora) 
+	{
+		long diferenca = Duration.between(agora, horario).toMinutes();
+		tempo = diferenca;
+	}
+	
+	public void calculaDistancia() 
+	{
+		double delta1, delta2;
+		delta1 = (partida[0]-partida[1])*(partida[0]-partida[1]);
+		delta2 = (chegada[0]-chegada[1])*(chegada[0]-chegada[1]);
+		distancia = Math.sqrt(delta1+delta2);
+		
+	}
 }

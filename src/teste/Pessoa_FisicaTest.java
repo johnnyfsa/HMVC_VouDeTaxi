@@ -4,19 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import model.Cliente_Model;
+import model.Pessoa_Fisica;
 
-class Cliente_ModelTest {
+class Pessoa_FisicaTest {
 
 	@Test
 	void testGetCpf() {
-		Cliente_Model ClientTest = new Cliente_Model();
+		Pessoa_Fisica ClientTest = new Pessoa_Fisica();
 		assertTrue(ClientTest.getCpf().isEmpty());
 	}
 
 	@Test
 	void testSetCpf() {
-		Cliente_Model ClientTest = new Cliente_Model();
+		Pessoa_Fisica ClientTest = new Pessoa_Fisica();
 		ClientTest.setCpf("teste");
 		assertEquals(ClientTest.getCpf(), "teste");
 	}

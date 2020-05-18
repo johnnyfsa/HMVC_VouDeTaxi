@@ -12,16 +12,16 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import model.Cliente_Model;
+import model.Pessoa_Fisica;
 
 public class Cliente_File_Controller  {
 	
-	private ArrayList<Cliente_Model> L;
+	private ArrayList<Pessoa_Fisica> L;
 	
 	
 	public Cliente_File_Controller() 
 	{
-		L = new ArrayList<Cliente_Model>();
+		L = new ArrayList<Pessoa_Fisica>();
 	}
 	
 	public void jsonRead() 
@@ -49,7 +49,7 @@ public class Cliente_File_Controller  {
 	  
 	            while(externalIterator.hasNext()) 
 	            {
-	            	Cliente_Model aux = new Cliente_Model();
+	            	Pessoa_Fisica aux = new Pessoa_Fisica();
 	            	jsonObject = externalIterator.next();
 	            	 aux.setNome((String) jsonObject.get("Nome"));
 	                 aux.setUsuario((String) jsonObject.get("Usuario"));
@@ -80,11 +80,11 @@ public class Cliente_File_Controller  {
         
         FileWriter writeFile = null;
         
-        Iterator<Cliente_Model> clienteIterator = L.iterator();
+        Iterator<Pessoa_Fisica> clienteIterator = L.iterator();
         while(clienteIterator.hasNext()) 
         {
         	JSONObject jsonObject = new JSONObject();
-        	Cliente_Model aux = new Cliente_Model();
+        	Pessoa_Fisica aux = new Pessoa_Fisica();
         	aux = clienteIterator.next();
         	 //Armazena dados em um Objeto JSON
         	jsonObject.put("Usuario", aux.getUsuario());
@@ -106,7 +106,7 @@ public class Cliente_File_Controller  {
         }
 	}
 	
-	public ArrayList<Cliente_Model> getList()
+	public ArrayList<Pessoa_Fisica> getList()
 	{
 		return L;
 	}

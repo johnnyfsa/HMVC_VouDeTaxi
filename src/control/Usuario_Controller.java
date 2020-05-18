@@ -2,7 +2,7 @@ package control;
 
 import java.util.ArrayList;
 
-import model.Cliente_Model;
+import model.Pessoa_Fisica;
 import model.Usuario_Model;
 
 public abstract class Usuario_Controller 

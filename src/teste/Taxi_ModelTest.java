@@ -2,25 +2,14 @@ package teste;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
 import model.Corrida_Model;
 import model.Taxi_Model;
 
 class Taxi_ModelTest {
-
-	@Test
-	void testGetCpf() {
-		Taxi_Model TaxiTest = new Taxi_Model();
-		assertTrue(TaxiTest.getCpf().isEmpty());
-	}
-
-	@Test
-	void testSetCpf() {
-		Taxi_Model TaxiTest = new Taxi_Model();
-		TaxiTest.setCpf("teste");
-		assertEquals(TaxiTest.getCpf(), "teste");
-	}
 
 	@Test
 	void testGetModeloCarro() {
@@ -31,8 +20,8 @@ class Taxi_ModelTest {
 	@Test
 	void testSetModeloCarro() {
 		Taxi_Model TaxiTest = new Taxi_Model();
-		TaxiTest.setModeloCarro("teste");
-		assertEquals(TaxiTest.getModeloCarro(), "teste");
+		TaxiTest.setModeloCarro("mazda");
+		assertEquals(TaxiTest.getModeloCarro(), "mazda");
 	}
 
 	@Test
@@ -44,8 +33,8 @@ class Taxi_ModelTest {
 	@Test
 	void testSetCorCarro() {
 		Taxi_Model TaxiTest = new Taxi_Model();
-		TaxiTest.setCorCarro("teste");
-		assertEquals(TaxiTest.getCorCarro(), "teste");
+		TaxiTest.setCorCarro("branco");
+		assertEquals(TaxiTest.getCorCarro(), "branco");
 	}
 
 	@Test
@@ -57,8 +46,9 @@ class Taxi_ModelTest {
 	@Test
 	void testSetPlaca() {
 		Taxi_Model TaxiTest = new Taxi_Model();
-		TaxiTest.setPlaca("teste");
-		assertEquals(TaxiTest.getPlaca(), "teste");
+		String placa = "GHJ1245";
+		TaxiTest.setPlaca(placa);
+		assertEquals(TaxiTest.getPlaca(), placa);
 	}
 
 	@Test
@@ -69,10 +59,55 @@ class Taxi_ModelTest {
 
 	@Test
 	void testSetCorridas() {
-		Corrida_Model CorridaTeste = new Corrida_Model();
 		Taxi_Model TaxiTest = new Taxi_Model();
-		TaxiTest.getCorridas().add(CorridaTeste);
+		ArrayList<Corrida_Model> corridas= new ArrayList<Corrida_Model>();
+		corridas.add(new Corrida_Model());
+		TaxiTest.setCorridas(corridas);
 		assertFalse(TaxiTest.getCorridas().isEmpty());
+	}
+
+	@Test
+	void testGetPontuacao() {
+		Taxi_Model TaxiTest = new Taxi_Model();
+		assertEquals(TaxiTest.getPontuacao(),0);
+	}
+
+	@Test
+	void testSetPontuacao() {
+		Taxi_Model TaxiTest = new Taxi_Model();
+		TaxiTest.setPontuacao(10);
+		assertEquals(TaxiTest.getPontuacao(),10);
+	}
+
+	@Test
+	void testGetLocalizacao() {
+		Taxi_Model TaxiTest = new Taxi_Model();
+		assertEquals(TaxiTest.getLocalizacao()[0],0);
+		assertEquals(TaxiTest.getLocalizacao()[1],0);
+	}
+
+	@Test
+	void testSetLocalizacao() {
+		Taxi_Model TaxiTest = new Taxi_Model();
+		int latitude = (int) (Math.random()*100);
+		int longetude =(int) (Math.random()*100);
+		int[] coordenadas = {latitude, longetude};
+		TaxiTest.setLocalizacao(coordenadas);
+		assertEquals(TaxiTest.getLocalizacao()[0],latitude);
+		assertEquals(TaxiTest.getLocalizacao()[1],longetude);
+	}
+
+	@Test
+	void testIsVisible() {
+		Taxi_Model TaxiTest = new Taxi_Model();
+		assertTrue(TaxiTest.isVisible());
+	}
+
+	@Test
+	void testSetVisible() {
+		Taxi_Model TaxiTest = new Taxi_Model();
+		TaxiTest.setVisible(false);
+		assertFalse(TaxiTest.isVisible());
 	}
 
 }

@@ -1,11 +1,11 @@
 package model;
 
-public class Usuario_Model {
+public abstract class Usuario_Model {
 	
 	private String Nome;
 	private String Usuario;
 	private String Senha;
-	private String cpf;
+
 	
 	public Usuario_Model() 
 	{
@@ -34,13 +34,6 @@ public class Usuario_Model {
 		Senha = senha;
 	}
 	
-	public String getCpf()
-	{
-		return cpf;
-	}
-	public void setCpf(String cpf) 
-	{
-		this.cpf = cpf;
-	}
+	
 
 }

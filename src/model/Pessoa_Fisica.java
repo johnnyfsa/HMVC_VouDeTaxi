@@ -1,12 +1,21 @@
 package model;
 
-public class Cliente_Model extends Usuario_Model {
+public class Pessoa_Fisica extends Usuario_Model {
 	
 	private String cpf;
 	
-	public Cliente_Model() 
+	public Pessoa_Fisica() 
 	{
 		cpf = "";
+	}
+	
+	public Pessoa_Fisica(String nome, String usuario, String senha, String cpf) 
+	{
+		
+		setNome("");
+		setUsuario("");
+		setSenha("");
+		setCpf("");
 	}
 
 	public String getCpf() {
