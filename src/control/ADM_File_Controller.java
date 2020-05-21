@@ -13,6 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import model.Pessoa_Fisica;
 //import model.Usuario;
 import model.Usuario_Model;
 
@@ -51,7 +52,7 @@ public class ADM_File_Controller
   
             while(externalIterator.hasNext()) 
             {
-            	Usuario_Model user = new Usuario_Model();
+            	Pessoa_Fisica user = new Pessoa_Fisica();
             	jsonObject = externalIterator.next();
             	 user.setNome((String) jsonObject.get("Nome"));
                  user.setUsuario((String) jsonObject.get("Usuario"));

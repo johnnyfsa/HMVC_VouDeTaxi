@@ -23,7 +23,7 @@ public abstract class Usuario_Controller
 	
 	public static  Usuario_Model buscar()
 	{
-		Usuario_Model user = new Usuario_Model();
+		Pessoa_Fisica user = new Pessoa_Fisica();
 		
 		return user;
 	}

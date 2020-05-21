@@ -15,16 +15,16 @@ import org.json.simple.parser.ParseException;
 import model.Pessoa_Fisica;
 import model.Usuario_Model;
 
-public class Cliente_Controller extends Usuario_Controller
+public class Copia_Cliente_controller extends Copia_Usuario_Controller
 {
-	private static ArrayList<Pessoa_Fisica> L;
+	private ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 	
 	private static void extracted() 
 	{
 		
 	}
 	
-	public static void jsonRead() 
+	public void jsonRead() 
 	{
 			
 		   	JSONObject jsonObject;
@@ -70,7 +70,7 @@ public class Cliente_Controller extends Usuario_Controller
 	        } 
 	}
 	
-	public static void jsonWrite() 
+	public void jsonWrite() 
 	{
 		//Cria um Objeto JSON
         JSONArray arrJson = new JSONArray();
@@ -110,43 +110,46 @@ public class Cliente_Controller extends Usuario_Controller
         }
 	}
 	
-	public static void adicionar(String nome, String usuario, String senha, String cpf)
+	public void adicionar(String nome, String usuario, String senha, String cpf)
 	{
-		//jsonRead();
+		 
+		jsonRead(); 
+		 
+		 
+		 	Pessoa_Fisica cliente = new Pessoa_Fisica();
 		
-		 Pessoa_Fisica cliente = new Pessoa_Fisica();
-		 JSONArray arrJson = new JSONArray();
-		 JSONObject jsonObject = new JSONObject();
-	     FileWriter writeFile = null;
+	     
+	        
 	        
 	        cliente.setNome(nome);
 	        cliente.setCpf(cpf);
 	        cliente.setUsuario(usuario);
 	        cliente.setSenha(senha);
-	        jsonObject.put("Usuario", cliente.getUsuario());
-            jsonObject.put("Nome", cliente.getNome());
-            jsonObject.put("Senha", cliente.getSenha());
-            jsonObject.put("CPF", cliente.getCpf());
-           
-           arrJson.add(jsonObject);
-		L.add(cliente);
-		
-		
-		
-		
+	        L.add(cliente);
+	        
+	      jsonWrite();
+           	
 	}
 	
-	public static Usuario_Model busca(String nome, String usuario, String cpf) 
+	public Pessoa_Fisica busca(String nome, String usuario, String cpf) 
 	{
-		Pessoa_Fisica m = new Pessoa_Fisica();
+		//Pessoa_Fisica m = new Pessoa_Fisica();
 		
+		for(Pessoa_Fisica aux:L)
+		{
+			if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+			{
+				return aux;
+			}
+			
+		}
 		
-		return m;
+		return null;
+		
 	}
 	
-	public static ArrayList<Pessoa_Fisica> getList()
+	public ArrayList<Pessoa_Fisica> getList()
 	{
 		return L;
 	}
-
 }
