@@ -21,9 +21,9 @@ public abstract class Usuario_Controller
 	
 	public static void editar() {}
 	
-	public static  Usuario_Model buscar()
+	public static  ArrayList<Pessoa_Fisica> buscar()
 	{
-		Pessoa_Fisica user = new Pessoa_Fisica();
+		ArrayList<Pessoa_Fisica> user = new ArrayList<Pessoa_Fisica>();
 		
 		return user;
 	}

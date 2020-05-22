@@ -19,10 +19,10 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 {
 	private ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 	
-	private static void extracted() 
-	{
-		
-	}
+//	private static void extracted() 
+//	{
+//		
+//	}
 	
 	public void jsonRead() 
 	{
@@ -37,7 +37,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	        	if(file.read() ==-1) 
 	        	{
 	        		System.out.println("Arquivo vazio\n");
-	        		extracted();
+	        		//extracted();
 	        	}
 	        	else
 	        	{
@@ -131,20 +131,47 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
            	
 	}
 	
-	public Pessoa_Fisica busca(String nome, String usuario, String cpf) 
+	public void remover(String nome, String usuario, String cpf)
+	{
+		ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
+		
+			
+		
+		// Prepara a união
+		ArrayList<Pessoa_Fisica> union = new ArrayList<Pessoa_Fisica>(lista);
+		union.addAll(L);
+		// Prepara a intersecção
+		ArrayList<Pessoa_Fisica> intersection = new ArrayList<Pessoa_Fisica>(lista);
+		intersection.retainAll(L);
+		// Subtrai a intersecção da união
+		union.removeAll(intersection);
+		// Atualiza a lista
+		L = union;
+		
+		jsonWrite();
+		
+		
+		
+	}
+	
+	public ArrayList<Pessoa_Fisica> busca(String nome, String usuario, String cpf) 
 	{
 		//Pessoa_Fisica m = new Pessoa_Fisica();
-		
+		ArrayList<Pessoa_Fisica> lista = new ArrayList<Pessoa_Fisica>();
+		boolean achou = false;
 		for(Pessoa_Fisica aux:L)
 		{
 			if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
 			{
-				return aux;
+				lista.add(aux);
+				achou = true;
+				
 			}
 			
 		}
 		
-		return null;
+		if(achou==true) return lista;
+		else return null;
 		
 	}
 	
