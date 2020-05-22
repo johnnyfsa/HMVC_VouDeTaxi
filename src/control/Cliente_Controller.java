@@ -108,7 +108,7 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
         }
 	}
 	
-	public void adicionar(String nome, String usuario, String senha, String cpf)
+	public static void adicionar(String nome, String usuario, String senha, String cpf)
 	{
 		 
 		jsonRead(); 		 
@@ -124,7 +124,7 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
            	
 	}
 	
-	public void remover(String nome, String usuario, String cpf)
+	public static void remover(String nome, String usuario, String cpf)
 	{
 		ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
 				
@@ -143,7 +143,7 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 		
 	}
 	
-	public ArrayList<Pessoa_Fisica> busca(String nome, String usuario, String cpf) 
+	public static ArrayList<Pessoa_Fisica> busca(String nome, String usuario, String cpf) 
 	{
 		//Pessoa_Fisica m = new Pessoa_Fisica();
 		ArrayList<Pessoa_Fisica> lista = new ArrayList<Pessoa_Fisica>();
@@ -164,7 +164,7 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 		
 	}
 	
-	public void editar(Pessoa_Fisica cliente,String nome, String usuario, String senha, String cpf) 
+	public static void editar(Pessoa_Fisica cliente,String nome, String usuario, String senha, String cpf) 
 	{
 		cliente.setNome(nome);
 		cliente.setUsuario(usuario);
@@ -172,7 +172,7 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 		cliente.setCpf(cpf);
 	}
 	
-	public ArrayList<Pessoa_Fisica> getList()
+	public static ArrayList<Pessoa_Fisica> getList()
 	{
 		return L;
 	}
