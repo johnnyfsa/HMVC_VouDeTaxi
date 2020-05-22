@@ -164,6 +164,14 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		
 	}
 	
+	public void editar(Pessoa_Fisica cliente,String nome, String usuario, String senha, String cpf) 
+	{
+		cliente.setNome(nome);
+		cliente.setUsuario(usuario);
+		cliente.setSenha(senha);
+		cliente.setCpf(cpf);
+	}
+	
 	public ArrayList<Pessoa_Fisica> getList()
 	{
 		return L;

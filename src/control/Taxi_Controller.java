@@ -1,5 +1,6 @@
 package control;
 
-public class Taxi_Controller {
-
+public class Taxi_Controller extends Usuario_Controller
+{
+	
 }

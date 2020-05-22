@@ -17,6 +17,8 @@ public class Pessoa_Fisica extends Usuario_Model {
 		setSenha("");
 		setCpf("");
 	}
+	
+
 
 	public String getCpf() {
 		return cpf;
