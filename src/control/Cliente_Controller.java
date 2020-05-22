@@ -109,9 +109,7 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 	}
 	
 	public static void adicionar(String nome, String usuario, String senha, String cpf)
-	{
-		 
-		jsonRead(); 		 
+	{				 
 		Pessoa_Fisica cliente = new Pessoa_Fisica();
 		
 		cliente.setNome(nome);

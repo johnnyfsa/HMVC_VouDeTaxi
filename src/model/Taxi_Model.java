@@ -22,6 +22,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		pontuacao =0;
 		localizacao = new int[2];
 		visible = true;
+		
 	}
 	public Taxi_Model(String nome, String usuario, String senha) 
 	{

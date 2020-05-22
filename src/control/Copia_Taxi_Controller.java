@@ -113,7 +113,7 @@ public class Copia_Taxi_Controller extends Copia_Usuario_Controller
 	public void adicionar(String nome, String usuario, String senha, String cpf)
 	{
 		 
-		jsonRead(); 		 
+				 
 		Taxi_Model taxi = new Taxi_Model();
 		
 		taxi.setNome(nome);

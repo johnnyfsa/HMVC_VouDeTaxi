@@ -53,8 +53,9 @@ class Copia_Cliente_controllerTest {
 	{
 			
 		Copia_Cliente_controller cliente = new Copia_Cliente_controller();
+		cliente.jsonRead();
 			
-			
+		
 			
 		cliente.adicionar("testanto1", "testando2", "testandoB", "testando4");
 			
