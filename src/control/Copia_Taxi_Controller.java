@@ -12,12 +12,14 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import model.Corrida_Model;
 import model.Pessoa_Fisica;
-import model.Usuario_Model;
+import model.Taxi_Model;
 
-public class Copia_Cliente_controller extends Copia_Usuario_Controller
+public class Copia_Taxi_Controller extends Copia_Usuario_Controller
 {
-	private ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
+	private ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
+	private ArrayList<Corrida_Model> corridas = new ArrayList<Corrida_Model>();
 	
 	
 	public void jsonRead() 
@@ -30,7 +32,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	    //Variaveis que irao armazenar os dados do arquivo JSON
 	     try 
 	     {
-	        FileReader file = new FileReader("clientes.json");
+	        FileReader file = new FileReader("taxis.json");
 	        if(file.read() ==-1) 
 	        {
 	        	System.out.println("Arquivo vazio\n");
@@ -39,7 +41,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	        else
 	        {
 	        	//o java n�o aceita resetar a filereader pra posi��o inicial, ent�o cria outro filereader
-	        	file = new FileReader("clientes.json");
+	        	file = new FileReader("taxis.json");
 	        }
 	        	
 	        jsonArray = (JSONArray) parser.parse(file);
@@ -47,7 +49,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	  
 	        while(externalIterator.hasNext()) 
 	        {
-	            Pessoa_Fisica aux = new Pessoa_Fisica();
+	            Taxi_Model aux = new Taxi_Model();
 	            jsonObject = externalIterator.next();
 	            aux.setNome((String) jsonObject.get("Nome"));
 	            aux.setUsuario((String) jsonObject.get("Usuario"));
@@ -79,7 +81,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		//Cria um Objeto JSON
         JSONArray arrJson = new JSONArray(); 
         FileWriter writeFile = null;
-        Iterator<Pessoa_Fisica> clienteIterator = L.iterator();
+        Iterator<Taxi_Model> clienteIterator = L.iterator();
 
         while(clienteIterator.hasNext()) 
         {
@@ -97,7 +99,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
          
         try
         {
-            writeFile = new FileWriter("clientes.json");
+            writeFile = new FileWriter("taxis.json");
             //Escreve no arquivo conteudo do Objeto JSON
             writeFile.write(arrJson.toJSONString());
             writeFile.close();
@@ -112,13 +114,13 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	{
 		 
 		jsonRead(); 		 
-		Pessoa_Fisica cliente = new Pessoa_Fisica();
+		Taxi_Model taxi = new Taxi_Model();
 		
-		cliente.setNome(nome);
-	    cliente.setCpf(cpf);
-	    cliente.setUsuario(usuario);
-	    cliente.setSenha(senha);
-	    L.add(cliente);
+		taxi.setNome(nome);
+	    taxi.setCpf(cpf);
+	    taxi.setUsuario(usuario);
+	    taxi.setSenha(senha);
+	    L.add(taxi);
 	        
 	    jsonWrite();
            	
@@ -126,13 +128,13 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	
 	public void remover(String nome, String usuario, String cpf)
 	{
-		ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
+		ArrayList<Taxi_Model> lista = busca(nome, usuario, cpf);
 				
 		// Prepara a união
-		ArrayList<Pessoa_Fisica> union = new ArrayList<Pessoa_Fisica>(lista);
+		ArrayList<Taxi_Model> union = new ArrayList<Taxi_Model>(lista);
 		union.addAll(L);
 		// Prepara a intersecção
-		ArrayList<Pessoa_Fisica> intersection = new ArrayList<Pessoa_Fisica>(lista);
+		ArrayList<Taxi_Model> intersection = new ArrayList<Taxi_Model>(lista);
 		intersection.retainAll(L);
 		// Subtrai a intersecção da união
 		union.removeAll(intersection);
@@ -143,12 +145,12 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		
 	}
 	
-	public ArrayList<Pessoa_Fisica> busca(String nome, String usuario, String cpf) 
+	public ArrayList<Taxi_Model> busca(String nome, String usuario, String cpf) 
 	{
 		//Pessoa_Fisica m = new Pessoa_Fisica();
-		ArrayList<Pessoa_Fisica> lista = new ArrayList<Pessoa_Fisica>();
+		ArrayList<Taxi_Model> lista = new ArrayList<Taxi_Model>();
 		boolean achou = false;
-		for(Pessoa_Fisica aux:L)
+		for(Taxi_Model aux:L)
 		{
 			if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
 			{
@@ -172,7 +174,13 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		cliente.setCpf(cpf);
 	}
 	
-	public ArrayList<Pessoa_Fisica> getList()
+	public void adcionarCorrida(Taxi_Model taxi, Corrida_Model corrida)
+	{
+		
+		corridas.add(corrida);
+	}
+	
+	public ArrayList<Taxi_Model> getList()
 	{
 		return L;
 	}
