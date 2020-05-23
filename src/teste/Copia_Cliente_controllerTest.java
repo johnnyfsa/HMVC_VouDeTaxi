@@ -54,12 +54,7 @@ class Copia_Cliente_controllerTest {
 			
 		Copia_Cliente_controller cliente = new Copia_Cliente_controller();
 		cliente.jsonRead();
-<<<<<<< HEAD
-=======
-			
-		
-			
->>>>>>> master
+
 		cliente.adicionar("testanto1", "testando2", "testandoB", "testando4");
 			
 		ArrayList<Pessoa_Fisica> TempList = cliente.getList();

@@ -152,7 +152,6 @@ public class Cliente_Controller extends Usuario_Controller
 	{
 		//Pessoa_Fisica m = new Pessoa_Fisica();
 		ArrayList<Pessoa_Fisica> lista = new ArrayList<Pessoa_Fisica>();
-		boolean achou = false;
 		try 
 		{
 			for(Pessoa_Fisica aux:L)
@@ -160,7 +159,6 @@ public class Cliente_Controller extends Usuario_Controller
 				if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
 				{
 					lista.add(aux);
-					achou = true;
 				
 				}
 			
@@ -168,10 +166,10 @@ public class Cliente_Controller extends Usuario_Controller
 		}
 		catch(NullPointerException e) 
 		{
-			String g="Não há ninguém com esses dados no banco!";
+			System.out.println("Não há ninguém com esses dados no banco!");
 		}
-		if(achou==true) return lista;
-		else return null;
+		return lista;
+		//else return null;
 		
 	}
 	

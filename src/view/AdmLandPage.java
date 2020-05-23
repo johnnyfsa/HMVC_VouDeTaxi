@@ -13,7 +13,7 @@ import net.miginfocom.swing.MigLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Adm_LandPage extends JFrame {
+public class AdmLandPage extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +24,7 @@ public class Adm_LandPage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Adm_LandPage frame = new Adm_LandPage();
+					AdmLandPage frame = new AdmLandPage();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +36,7 @@ public class Adm_LandPage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Adm_LandPage() {
+	public AdmLandPage() {
 		setTitle("Painel Geral Administrador");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 560, 400);

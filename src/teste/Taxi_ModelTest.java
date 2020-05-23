@@ -91,7 +91,7 @@ class Taxi_ModelTest {
 		Taxi_Model TaxiTest = new Taxi_Model();
 		int latitude = (int) (Math.random()*100);
 		int longetude =(int) (Math.random()*100);
-		int[] coordenadas = {latitude, longetude};
+		double[] coordenadas = {latitude, longetude};
 		TaxiTest.setLocalizacao(coordenadas);
 		assertEquals(TaxiTest.getLocalizacao()[0],latitude);
 		assertEquals(TaxiTest.getLocalizacao()[1],longetude);

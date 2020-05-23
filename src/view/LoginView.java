@@ -6,13 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import control.FrameController;
+import control.Login_Controller;
+
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import net.miginfocom.swing.MigLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Login_View extends JFrame {
+public class LoginView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField userTextField;
@@ -29,7 +36,7 @@ public class Login_View extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login_View frame = new Login_View();
+					LoginView frame = new LoginView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +48,7 @@ public class Login_View extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login_View() {
+	public LoginView() {
 		setTitle("Vou de Taxi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -75,6 +82,32 @@ public class Login_View extends JFrame {
 		panel_1.setLayout(new MigLayout("", "[][][][][][][]", "[]"));
 		
 		confirmBtn = new JButton("Confirmar");
+		confirmBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String user = userTextField.getText();
+				String psswd = pswdTextField.getText();
+				int a = Login_Controller.autenticarLogin(user, psswd);
+				switch(a) 
+				{
+				case 0:
+					JOptionPane.showMessageDialog(FrameController.getLoginView(),"parabens oracle");
+					break;
+				case 1:
+					FrameController.getAdmLandPage().setVisible(true);
+					dispose();
+					break;
+				case 2:
+					FrameController.getTaxiLandPage().setVisible(true);
+					dispose();
+					break;
+				case 3:
+					FrameController.getClienteLandPage().setVisible(true);
+					dispose();
+					break;
+				}
+				
+			}
+		});
 		panel_1.add(confirmBtn, "cell 0 0");
 		
 		cadastraBtn = new JButton("Cadastrar Conta");

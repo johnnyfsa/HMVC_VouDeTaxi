@@ -25,7 +25,7 @@ class Corrida_ModelTest {
 		Corrida_Model raceTest = new Corrida_Model();
 		int latitude = (int) (Math.random()*100);
 		int longetude = (int) (Math.random()*100);
-		int[] coordenadas = {latitude, longetude};
+		double[] coordenadas = {latitude, longetude};
 		raceTest.setPartida(coordenadas);
 		assertEquals(raceTest.getPartida()[0], latitude);
 		assertEquals(raceTest.getPartida()[1], longetude);
@@ -43,7 +43,7 @@ class Corrida_ModelTest {
 		Corrida_Model raceTest = new Corrida_Model();
 		int latitude = (int) (Math.random()*100);
 		int longetude = (int) (Math.random()*100);
-		int[] coordenadas = {latitude, longetude};
+		double[] coordenadas = {latitude, longetude};
 		raceTest.setChegada(coordenadas);
 		assertEquals(raceTest.getChegada()[0], latitude);
 		assertEquals(raceTest.getChegada()[1], longetude);
@@ -178,10 +178,10 @@ class Corrida_ModelTest {
 		Corrida_Model raceTest = new Corrida_Model();
 		int latitude1 = (int) (Math.random()*100);
 		int longetude1 = (int) (Math.random()*100);
-		int[] coordenadas1 = {latitude1, longetude1};
+		double[] coordenadas1 = {latitude1, longetude1};
 		int latitude2 = (int) (Math.random()*100);
 		int longetude2 = (int) (Math.random()*100);
-		int[] coordenadas2 = {latitude2, longetude2};
+		double[] coordenadas2 = {latitude2, longetude2};
 		raceTest.setPartida(coordenadas1);
 		raceTest.setChegada(coordenadas2);
 		raceTest.calculaDistancia();
