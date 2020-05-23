@@ -36,6 +36,7 @@ public class TaxiLandPage extends JFrame {
 	 * Create the frame.
 	 */
 	public TaxiLandPage() {
+		setTitle("Vou de Taxi ");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 611, 415);
 		contentPane = new JPanel();
