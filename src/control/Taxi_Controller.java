@@ -55,6 +55,11 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	            aux.setUsuario((String) jsonObject.get("Usuario"));
 	            aux.setSenha((String) jsonObject.get("Senha"));
 	            aux.setCpf((String) jsonObject.get("CPF"));
+	            aux.setCorCarro((String) jsonObject.get("Cor do Carro"));
+	            aux.setModeloCarro((String) jsonObject.get("Modelo do Carro"));
+	            aux.setPlaca((String) jsonObject.get("Placa do Carro"));
+	            aux.setLocalizacao((double[]) jsonObject.get("Localizacao"));
+	            aux.setPontuacao((float) jsonObject.get("Pontuacao"));
 	                
 	            L.add(aux);
 	          }
@@ -81,19 +86,24 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		//Cria um Objeto JSON
         JSONArray arrJson = new JSONArray(); 
         FileWriter writeFile = null;
-        Iterator<Taxi_Model> clienteIterator = L.iterator();
+        Iterator<Taxi_Model> taxiIterator = L.iterator();
 
-        while(clienteIterator.hasNext()) 
+        while(taxiIterator.hasNext()) 
         {
         	JSONObject jsonObject = new JSONObject();
-        	Pessoa_Fisica aux = new Pessoa_Fisica();
-        	aux = clienteIterator.next();
+        	Taxi_Model aux = new Taxi_Model();
+        	aux = taxiIterator.next();
         	
         	//Armazena dados em um Objeto JSON
         	jsonObject.put("Usuario", aux.getUsuario());
             jsonObject.put("Nome", aux.getNome());
             jsonObject.put("Senha", aux.getSenha());
             jsonObject.put("CPF", aux.getCpf());
+            jsonObject.put("Cor do Carro", aux.getCorCarro());
+            jsonObject.put("Modelo do Carro", aux.getModeloCarro());
+            jsonObject.put("Placa do Carro", aux.getPlaca());
+            jsonObject.put("Localizacao", aux.getLocalizacao());
+            jsonObject.put("Pontuacao", aux.getPontuacao());
             arrJson.add(jsonObject);
         }
          
