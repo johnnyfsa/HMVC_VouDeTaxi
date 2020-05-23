@@ -126,22 +126,24 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	
 	public void remover(String nome, String usuario, String cpf)
 	{
-		try {
-		ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
+		try 
+		{
+			ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
 				
-		// Prepara a união
-		ArrayList<Pessoa_Fisica> union = new ArrayList<Pessoa_Fisica>(lista);
-		union.addAll(L);
-		// Prepara a intersecção
-		ArrayList<Pessoa_Fisica> intersection = new ArrayList<Pessoa_Fisica>(lista);
-		intersection.retainAll(L);
-		// Subtrai a intersecção da união
-		union.removeAll(intersection);
-		// Atualiza a lista
-		L = union;
+			// Prepara a união
+			ArrayList<Pessoa_Fisica> union = new ArrayList<Pessoa_Fisica>(lista);
+			union.addAll(L);
+			// Prepara a intersecção
+			ArrayList<Pessoa_Fisica> intersection = new ArrayList<Pessoa_Fisica>(lista);
+			intersection.retainAll(L);
+			// Subtrai a intersecção da união
+			union.removeAll(intersection);
+			// Atualiza a lista
+			L = union;
 		
-		jsonWrite();		
-		} catch(NullPointerException e) 
+			jsonWrite();		
+		} 
+		catch(NullPointerException e) 
 		{
 			String g="Não há ninguém com esses dados no banco!";
 		}
@@ -152,15 +154,20 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		//Pessoa_Fisica m = new Pessoa_Fisica();
 		ArrayList<Pessoa_Fisica> lista = new ArrayList<Pessoa_Fisica>();
 		boolean achou = false;
-		for(Pessoa_Fisica aux:L)
-		{
-			if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+		try 
+		{		
+			for(Pessoa_Fisica aux:L)
 			{
-				lista.add(aux);
-				achou = true;
-				
+				if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+				{
+					lista.add(aux);
+					achou = true;				
+				}			
 			}
-			
+		} 
+		catch(NullPointerException e) 
+		{
+			String g="Não há ninguém com esses dados no banco!";
 		}
 		
 		if(achou==true) return lista;

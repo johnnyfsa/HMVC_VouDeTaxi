@@ -1,24 +1,50 @@
 package control;
 
+import java.sql.Time;
+
 import model.Corrida_Model;
+import model.Pessoa_Fisica;
+import model.Taxi_Model;
 
 public class Corrida_Controller 
 {
-	private Corrida_Model corrida_atual;
+	private static Corrida_Model corrida_atual;
 	
 	
-	public void setCorrida(Corrida_Model corrida_atual) 
+	public static void setCorrida(Corrida_Model corrida) 
 	{
-		this.corrida_atual = corrida_atual;
+		corrida_atual = corrida;
 	}
 	
-	public Corrida_Model getCorrida() 
+	public static Corrida_Model getCorrida() 
 	{
 		return corrida_atual;
 	}
 	
-	public void associarTaxi() 
+	public static void associarTaxi() 
 	{
+		Taxi_Model taxi = Taxi_Controller.selecionaTaxi(corrida_atual.getPartida());
 		
+		//Liga a corrida ao taxi
+		corrida_atual.setTaxi(taxi);
+		//Liga o taxi à corrida
+		Taxi_Controller.adcionarCorrida(taxi, corrida_atual);
 	}
+	
+	public static void CriarCorrida(double[] partida, double[] chegada, Time horario) 
+	{
+		Pessoa_Fisica pessoa;
+		
+		corrida_atual = new Corrida_Model();
+		corrida_atual.setPartida(partida);
+		corrida_atual.setChegada(chegada);
+		corrida_atual.calculaDistancia();
+		pessoa = (Pessoa_Fisica) Login_Controller.getUsuario();
+		corrida_atual.setCliente(pessoa);
+	}
+	
+	
+	
+		
+		
 }
