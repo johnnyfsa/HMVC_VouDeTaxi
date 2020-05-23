@@ -16,4 +16,9 @@ public class Corrida_Controller
 	{
 		return corrida_atual;
 	}
+	
+	public void associarTaxi() 
+	{
+		
+	}
 }

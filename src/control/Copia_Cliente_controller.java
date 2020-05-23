@@ -126,6 +126,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	
 	public void remover(String nome, String usuario, String cpf)
 	{
+		try {
 		ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
 				
 		// Prepara a união
@@ -140,7 +141,10 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		L = union;
 		
 		jsonWrite();		
-		
+		} catch(NullPointerException e) 
+		{
+			String g="Não há ninguém com esses dados no banco!";
+		}
 	}
 	
 	public ArrayList<Pessoa_Fisica> busca(String nome, String usuario, String cpf) 
@@ -170,6 +174,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 		cliente.setUsuario(usuario);
 		cliente.setSenha(senha);
 		cliente.setCpf(cpf);
+		
 	}
 	
 	public ArrayList<Pessoa_Fisica> getList()
