@@ -10,7 +10,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 	private String Placa;
 	private ArrayList<Corrida_Model> Corridas;
 	private float pontuacao;
-	private int[] localizacao;
+	private double[] localizacao;
 	private boolean visible;
 	
 	public Taxi_Model() 
@@ -20,7 +20,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		Placa = "";
 		Corridas = new ArrayList<Corrida_Model>();
 		pontuacao =0;
-		localizacao = new int[2];
+		localizacao = new double[2];
 		visible = true;
 		
 	}
@@ -34,7 +34,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		Placa = "";
 		Corridas = new ArrayList<Corrida_Model>();
 		pontuacao =0;
-		localizacao = new int[2];
+		localizacao = new double[2];
 		visible = true;
 	}
 	
@@ -77,13 +77,13 @@ public class Taxi_Model extends Pessoa_Fisica {
 
 
 
-	public int[] getLocalizacao() {
+	public double[] getLocalizacao() {
 		return localizacao;
 	}
 
 
 
-	public void setLocalizacao(int[] localizacao) {
+	public void setLocalizacao(double[] localizacao) {
 		this.localizacao = localizacao;
 	}
 

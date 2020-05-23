@@ -17,7 +17,7 @@ import model.Usuario_Model;
 
 public class Cliente_Controller extends Usuario_Controller
 {
-private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
+	private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 	
 	
 	public static void jsonRead() 
@@ -124,21 +124,28 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 	
 	public static void remover(String nome, String usuario, String cpf)
 	{
-		ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
+		try 
+		{
+			ArrayList<Pessoa_Fisica> lista = busca(nome, usuario, cpf);
 				
-		// Prepara a união
-		ArrayList<Pessoa_Fisica> union = new ArrayList<Pessoa_Fisica>(lista);
-		union.addAll(L);
-		// Prepara a intersecção
-		ArrayList<Pessoa_Fisica> intersection = new ArrayList<Pessoa_Fisica>(lista);
-		intersection.retainAll(L);
-		// Subtrai a intersecção da união
-		union.removeAll(intersection);
-		// Atualiza a lista
-		L = union;
+			// Prepara a união
+			ArrayList<Pessoa_Fisica> union = new ArrayList<Pessoa_Fisica>(lista);
+			union.addAll(L);
+			// Prepara a intersecção
+			ArrayList<Pessoa_Fisica> intersection = new ArrayList<Pessoa_Fisica>(lista);
+			intersection.retainAll(L);
+			// Subtrai a intersecção da união
+			union.removeAll(intersection);
+			// Atualiza a lista
+			L = union;
 		
-		jsonWrite();		
+			jsonWrite();		
+		}
 		
+		catch(NullPointerException e) 
+		{
+			String g="Não há ninguém com esses dados no banco!";
+		}
 	}
 	
 	public static ArrayList<Pessoa_Fisica> busca(String nome, String usuario, String cpf) 
@@ -146,17 +153,23 @@ private static ArrayList<Pessoa_Fisica> L = new ArrayList<Pessoa_Fisica>();
 		//Pessoa_Fisica m = new Pessoa_Fisica();
 		ArrayList<Pessoa_Fisica> lista = new ArrayList<Pessoa_Fisica>();
 		boolean achou = false;
-		for(Pessoa_Fisica aux:L)
+		try 
 		{
-			if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+			for(Pessoa_Fisica aux:L)
 			{
-				lista.add(aux);
-				achou = true;
+				if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+				{
+					lista.add(aux);
+					achou = true;
 				
-			}
+				}
 			
+			}
 		}
-		
+		catch(NullPointerException e) 
+		{
+			String g="Não há ninguém com esses dados no banco!";
+		}
 		if(achou==true) return lista;
 		else return null;
 		

@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 public class Corrida_Model {
 	
-	private int[] partida;
-	private int[] chegada;
+	private double[] partida;
+	private double[] chegada;
 	private LocalDateTime horario;
 	private double distancia;
 	private Pessoa_Fisica cliente;
@@ -14,12 +14,12 @@ public class Corrida_Model {
 	private boolean status;
 	private int identificador;
 	private float avaliacao;
-	private long tempo; // o tempo tá sendo gerado em minutos nesse caso, se a corrida durar horas, a gente vai precisar fazer uma conversão
+	private long tempo; // o tempo tï¿½ sendo gerado em minutos nesse caso, se a corrida durar horas, a gente vai precisar fazer uma conversï¿½o
 	
 	public Corrida_Model() 
 	{
-		partida = new int[2];
-		chegada = new int[2];
+		partida = new double[2];
+		chegada = new double[2];
 		horario = LocalDateTime.now();
 		distancia = 0;
 		cliente = new Pessoa_Fisica();
@@ -30,16 +30,16 @@ public class Corrida_Model {
 		tempo =0;
 	}
 	
-	public int[] getPartida() {
+	public double[] getPartida() {
 		return partida;
 	}
-	public void setPartida(int[] partida) {
+	public void setPartida(double[] partida) {
 		this.partida = partida;
 	}
-	public int[] getChegada() {
+	public double[] getChegada() {
 		return chegada;
 	}
-	public void setChegada(int[] chegada) {
+	public void setChegada(double[] chegada) {
 		this.chegada = chegada;
 	}
 	public double getDistancia() {

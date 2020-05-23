@@ -19,7 +19,7 @@ import model.Taxi_Model;
 public class Copia_Taxi_Controller extends Copia_Usuario_Controller
 {
 	private ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
-	private ArrayList<Corrida_Model> corridas = new ArrayList<Corrida_Model>();
+	
 	
 	
 	public void jsonRead() 
@@ -128,21 +128,27 @@ public class Copia_Taxi_Controller extends Copia_Usuario_Controller
 	
 	public void remover(String nome, String usuario, String cpf)
 	{
-		ArrayList<Taxi_Model> lista = busca(nome, usuario, cpf);
+		try 
+		{
+			ArrayList<Taxi_Model> lista = busca(nome, usuario, cpf);
 				
-		// Prepara a união
-		ArrayList<Taxi_Model> union = new ArrayList<Taxi_Model>(lista);
-		union.addAll(L);
-		// Prepara a intersecção
-		ArrayList<Taxi_Model> intersection = new ArrayList<Taxi_Model>(lista);
-		intersection.retainAll(L);
-		// Subtrai a intersecção da união
-		union.removeAll(intersection);
-		// Atualiza a lista
-		L = union;
+			// Prepara a união
+			ArrayList<Taxi_Model> union = new ArrayList<Taxi_Model>(lista);
+			union.addAll(L);
+			// Prepara a intersecção
+			ArrayList<Taxi_Model> intersection = new ArrayList<Taxi_Model>(lista);
+			intersection.retainAll(L);
+			// Subtrai a intersecção da união
+			union.removeAll(intersection);
+			// Atualiza a lista
+			L = union;
 		
-		jsonWrite();		
-		
+			jsonWrite();		
+		}
+		catch(NullPointerException e) 
+		{
+			String g="Não há ninguém com esses dados no banco!";
+		}
 	}
 	
 	public ArrayList<Taxi_Model> busca(String nome, String usuario, String cpf) 
@@ -150,15 +156,22 @@ public class Copia_Taxi_Controller extends Copia_Usuario_Controller
 		//Pessoa_Fisica m = new Pessoa_Fisica();
 		ArrayList<Taxi_Model> lista = new ArrayList<Taxi_Model>();
 		boolean achou = false;
-		for(Taxi_Model aux:L)
+		try 
 		{
-			if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+			for(Taxi_Model aux:L)
 			{
-				lista.add(aux);
-				achou = true;
+				if(aux.getNome().equals(nome) || aux.getCpf().equals(cpf) || aux.getUsuario().equals(usuario))
+				{
+					lista.add(aux);
+					achou = true;
 				
-			}
+				}
 			
+			}
+		}
+		catch(NullPointerException e) 
+		{
+			String g="Não há ninguém com esses dados no banco!";
 		}
 		
 		if(achou==true) return lista;
@@ -177,7 +190,7 @@ public class Copia_Taxi_Controller extends Copia_Usuario_Controller
 	public void adcionarCorrida(Taxi_Model taxi, Corrida_Model corrida)
 	{
 		
-		corridas.add(corrida);
+		taxi.getCorridas().add(corrida);
 	}
 	
 	public ArrayList<Taxi_Model> getList()
