@@ -111,7 +111,7 @@ public class Copia_Cliente_controller extends Copia_Usuario_Controller
 	public void adicionar(String nome, String usuario, String senha, String cpf)
 	{
 		 
-		jsonRead(); 		 
+		//jsonRead(); 		 
 		Pessoa_Fisica cliente = new Pessoa_Fisica();
 		
 		cliente.setNome(nome);

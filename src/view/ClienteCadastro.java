@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class TaxiCadastro extends JFrame {
+public class ClienteCadastro extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -19,9 +19,6 @@ public class TaxiCadastro extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -30,7 +27,7 @@ public class TaxiCadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TaxiCadastro frame = new TaxiCadastro();
+					ClienteCadastro frame = new ClienteCadastro();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,17 +39,17 @@ public class TaxiCadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TaxiCadastro() {
-		setTitle("Cadastro de Taxista");
+	public ClienteCadastro() {
+		setTitle("Cadastro de Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 407);
+		setBounds(100, 100, 450, 314);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 414, 294);
+		panel.setBounds(10, 11, 414, 201);
 		contentPane.add(panel);
 		panel.setLayout(new MigLayout("", "[][grow][][][][][][][]", "[][][][][][][][][][][][][][][][][][][][][][]"));
 		
@@ -91,29 +88,8 @@ public class TaxiCadastro extends JFrame {
 		panel.add(textField_4, "cell 1 11 3 1,growx");
 		textField_4.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("Modelo de carro");
-		panel.add(lblNewLabel_5, "cell 0 13,alignx trailing");
-		
-		textField_5 = new JTextField();
-		panel.add(textField_5, "cell 1 13 5 1,growx");
-		textField_5.setColumns(10);
-		
-		JLabel lblNewLabel_6 = new JLabel("Cor");
-		panel.add(lblNewLabel_6, "cell 0 15,alignx trailing");
-		
-		textField_6 = new JTextField();
-		panel.add(textField_6, "cell 1 15,growx");
-		textField_6.setColumns(10);
-		
-		JLabel lblNewLabel_7 = new JLabel("Placa");
-		panel.add(lblNewLabel_7, "cell 0 17,alignx trailing");
-		
-		textField_7 = new JTextField();
-		panel.add(textField_7, "cell 1 17,growx");
-		textField_7.setColumns(10);
-		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 316, 414, 51);
+		panel_1.setBounds(10, 223, 414, 51);
 		contentPane.add(panel_1);
 		panel_1.setLayout(new MigLayout("", "[][][][][][][][][]", "[]"));
 		

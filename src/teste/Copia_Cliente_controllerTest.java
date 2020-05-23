@@ -12,7 +12,7 @@ import model.Usuario_Model;
 
 class Copia_Cliente_controllerTest {
 
-	@Test
+	
 	void testeRemover() 
 	{
 		Copia_Cliente_controller cliente = new Copia_Cliente_controller();
@@ -48,14 +48,12 @@ class Copia_Cliente_controllerTest {
 //		assertEquals(aux.getSenha(), "testandoB");
 //		assertEquals(aux.getUsuario(), "testando2");
 	}
-	
+	@Test
 	void testeAdicionar() 
 	{
 			
 		Copia_Cliente_controller cliente = new Copia_Cliente_controller();
-			
-			
-			
+		cliente.jsonRead();
 		cliente.adicionar("testanto1", "testando2", "testandoB", "testando4");
 			
 		ArrayList<Pessoa_Fisica> TempList = cliente.getList();
