@@ -2,6 +2,7 @@ package control;
 
 import java.time.LocalDateTime;
 
+import Randomico.CriaClienteAleatorio;
 import model.Corrida_Model;
 import model.Pessoa_Fisica;
 import model.Taxi_Model;
@@ -51,8 +52,24 @@ public class Corrida_Controller
 		return true;
 	}
 	
-	
-	
+	public static boolean CriarCorridaTaxi() 
+	{
+		CriaClienteAleatorio cca = new CriaClienteAleatorio();
+		Pessoa_Fisica cliente = cca.getCobaia();
+		corrida_atual = new Corrida_Model();
+		corrida_atual.setPartida(cca.getPartida());
+		corrida_atual.setChegada(cca.getChegada());
+		corrida_atual.calculaDistancia();
+		corrida_atual.setCliente(cliente);
+		corrida_atual.setHorario(LocalDateTime.now());
 		
-		
+		return false;
+	}
+	
+	public static void reset() 
+	{
+		corrida_atual = new Corrida_Model();
+	}
+	
+			
 }

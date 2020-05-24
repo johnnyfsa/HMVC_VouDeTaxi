@@ -2,6 +2,9 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,6 +14,7 @@ import javax.swing.JToggleButton;
 import javax.swing.event.ChangeListener;
 
 import control.Cliente_Controller;
+import control.Corrida_Controller;
 import control.Login_Controller;
 import control.Taxi_Controller;
 
@@ -56,23 +60,30 @@ public class TaxiLandPage extends JFrame {
 		panel.setLayout(new MigLayout("", "[]", "[]"));
 		
 		JToggleButton tglbtnVisible = new JToggleButton("Invisivel");
-		tglbtnVisible.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent arg0) {
-				if(visivel==false) 
-				{
-					tglbtnVisible.setText("Visivel");
-					visivel=true;
-					Taxi_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).setVisible(visivel);
-				}
-				else 
-				{
-					tglbtnVisible.setText("Invisivel");
-					Taxi_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).setVisible(visivel);
-					visivel=false;
-				}
-				
-			}
-		});
+		tglbtnVisible.addItemListener(new ItemListener() {
+			@Override
+			   public void itemStateChanged(ItemEvent ev) {
+			      if(ev.getStateChange()==ItemEvent.SELECTED){
+			    	  
+			    	  tglbtnVisible.setText("Visivel");
+			    	  visivel=true;
+			    	  Taxi_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).setVisible(visivel);
+			    	  try {
+							Thread.sleep(5000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			    	  Corrida_Controller.CriarCorridaTaxi();
+						
+						
+			      } else if(ev.getStateChange()==ItemEvent.DESELECTED){
+			    	  tglbtnVisible.setText("Invisivel");
+			    	  Taxi_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).setVisible(visivel);
+			    	  visivel=false;
+			      }
+			   }
+			});
 		panel.add(tglbtnVisible, "cell 0 0,growx");
 		
 		JPanel panel_1 = new JPanel();
