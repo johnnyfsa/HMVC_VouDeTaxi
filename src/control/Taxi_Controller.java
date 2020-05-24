@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
@@ -12,6 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import Randomico.aceitaRandom;
 import model.Corrida_Model;
 import model.Pessoa_Fisica;
 import model.Taxi_Model;
@@ -213,10 +215,13 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	public static Taxi_Model selecionaTaxi(double[] partida) 
 	{
 		ArrayList<Taxi_Model> disponiveis = new ArrayList<Taxi_Model>();
+		ArrayList<Taxi_Model> aceitaveis = new ArrayList<Taxi_Model>();
+		ArrayList<Double> distancias = new ArrayList<>();
 		Taxi_Model taxi = new Taxi_Model();
+		aceitaRandom aceita = new aceitaRandom();
 		
-		double aux_distancia, taxi_distancia = 0.0;
-		
+		double anteriorTaxi = 50;
+		double distanciaAtual, distanciaProx, distanciaTaxi;
 		
 		try 
 		{
@@ -240,15 +245,32 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		{
 			for(Taxi_Model aux:disponiveis)
 			{
-				aux_distancia = calculaDistancia(partida, aux.getLocalizacao());
 				
-				if(aux_distancia < 50 && aux_distancia < taxi_distancia)
+				if(calculaDistancia(partida, aux.getLocalizacao()) < 50 && calculaDistancia(partida, aux.getLocalizacao()) < anteriorTaxi  && aceita.aceitaCorrida())
 				{
-					taxi = aux;
+					aceitaveis.add(aux);
 			
 				}
-				taxi_distancia = aux_distancia;
+			
+			 
 			}
+			 for(Taxi_Model aux:aceitaveis) 
+			 {
+				 distancias.add(calculaDistancia(partida, aux.getLocalizacao()));
+			 }
+			 
+			 Collections.sort(distancias);
+			 
+			 // 4 FOR, FODASSE!!!!
+			 for(Taxi_Model aux:aceitaveis)
+			 {
+				 if(calculaDistancia(partida, aux.getLocalizacao()) == distancias.get(0)) 
+				 {
+					 return aux;
+				 }
+			 }
+			
+			
 			return taxi;
 		}
 		catch(NullPointerException e) 

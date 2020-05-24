@@ -1,3 +1,4 @@
+package Randomico;
 import java.util.Random;
 
 public class aceitaRandom 
