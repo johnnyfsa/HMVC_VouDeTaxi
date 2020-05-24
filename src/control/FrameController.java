@@ -15,7 +15,8 @@ public class FrameController {
 	private static ActiveRaceFrame activeRaceFrame = new ActiveRaceFrame();
 	private static AdmLandPage admLandPage = new AdmLandPage();
 	private static CadastroPickFrame cadastroPickFrame = new CadastroPickFrame();
-	private static ClienteCadastro clienteCadastro = new ClienteCadastro();
+	private static ClienteCadastro clienteCadastro = new ClienteCadastro(false);
+	private static ClienteCadastro editarClienteCadastro = new ClienteCadastro(true);
 	private static ClienteLandPage clienteLandPage = new ClienteLandPage();
 	private static LoginView loginView = new LoginView();
 	private static TaxiCadastro taxiCadastro = new TaxiCadastro();
@@ -92,6 +93,27 @@ public class FrameController {
 
 	public static void setTaxiSearchFrame(TaxiSearchFrame taxiSearchFrame) {
 		FrameController.taxiSearchFrame = taxiSearchFrame;
+	}
+	public static void resetFrames() 
+	{
+		 activeRaceFrame = new ActiveRaceFrame();
+		 admLandPage = new AdmLandPage();
+		 cadastroPickFrame = new CadastroPickFrame();
+		 clienteCadastro = new ClienteCadastro(false);
+		 editarClienteCadastro = new ClienteCadastro(true);
+		 clienteLandPage = new ClienteLandPage();
+		 loginView = new LoginView();
+		 taxiCadastro = new TaxiCadastro();
+		 taxiLandPage = new TaxiLandPage();
+		 taxiSearchFrame = new TaxiSearchFrame();
+	}
+
+	public static ClienteCadastro getEditarClienteCadastro() {
+		return editarClienteCadastro;
+	}
+
+	public static void setEditarClienteCadastro(ClienteCadastro editarClienteCadastro) {
+		FrameController.editarClienteCadastro = editarClienteCadastro;
 	}
 
 }

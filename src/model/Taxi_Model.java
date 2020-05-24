@@ -9,7 +9,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 	private String CorCarro;
 	private String Placa;
 	private ArrayList<Corrida_Model> Corridas;
-	private float pontuacao;
+	private double pontuacao;
 	private double[] localizacao;
 	private boolean visible;
 	
@@ -65,13 +65,13 @@ public class Taxi_Model extends Pessoa_Fisica {
 
 
 
-	public float getPontuacao() {
+	public double getPontuacao() {
 		return pontuacao;
 	}
 
 
 
-	public void setPontuacao(float pontuacao) {
+	public void setPontuacao(double pontuacao) {
 		this.pontuacao = pontuacao;
 	}
 
