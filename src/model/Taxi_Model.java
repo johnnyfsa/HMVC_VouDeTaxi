@@ -11,6 +11,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 	private boolean visible;
 	private int totalCorridas;
 	private long tempoTotal;
+	private double pontuacaoTotal;
 	
 	public Taxi_Model() 
 	{
@@ -109,5 +110,16 @@ public class Taxi_Model extends Pessoa_Fisica {
 	{
 		tempoTotal+=tempo;
 	}
+	
+	public void recebePonto(double ponto) 
+	{
+		pontuacaoTotal += ponto;
+		
+		pontuacao = pontuacaoTotal/totalCorridas;
+	}
+	
+	
+	
+	
 
 }
