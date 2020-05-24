@@ -51,20 +51,7 @@ class Taxi_ModelTest {
 		assertEquals(TaxiTest.getPlaca(), placa);
 	}
 
-	@Test
-	void testGetCorridas() {
-		Taxi_Model TaxiTest = new Taxi_Model();
-		assertTrue(TaxiTest.getCorridas().isEmpty());
-	}
 
-	@Test
-	void testSetCorridas() {
-		Taxi_Model TaxiTest = new Taxi_Model();
-		ArrayList<Corrida_Model> corridas= new ArrayList<Corrida_Model>();
-		corridas.add(new Corrida_Model());
-		TaxiTest.setCorridas(corridas);
-		assertFalse(TaxiTest.getCorridas().isEmpty());
-	}
 
 	@Test
 	void testGetPontuacao() {

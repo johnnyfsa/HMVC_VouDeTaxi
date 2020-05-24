@@ -198,7 +198,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		
 	}
 	
-	public static void editar(String cpf,String nome, String usuario, String senha, String modelo, String cor, String placa, double pontuação, boolean visible ) 
+	public static void editar(String cpf,String nome, String usuario, String senha, String modelo, String cor, String placa, double pontuacao, boolean visible ) 
 	{
 		Taxi_Model taxi = busca("","",cpf).get(0);
 		taxi.setNome(nome);
@@ -209,8 +209,8 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	
 	public static void adcionarCorrida(Taxi_Model taxi, Corrida_Model corrida)
 	{
-		
-		taxi.getCorridas().add(corrida);
+		taxi.addCorrida();
+		taxi.addTempo(corrida.getTempo());
 	}
 	
 	public static Taxi_Model selecionaTaxi(double[] partida) 
@@ -247,7 +247,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 			for(Taxi_Model aux:disponiveis)
 			{
 				
-				if(calculaDistancia(partida, aux.getLocalizacao()) < 50 && calculaDistancia(partida, aux.getLocalizacao()) < anteriorTaxi  && aceita.aceitaCorrida())
+				if(calculaDistancia(partida, aux.getLocalizacao()) < 50  && aceita.aceitaCorrida())
 				{
 					aceitaveis.add(aux);
 			
@@ -289,8 +289,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		delta2 = (chegada[0]-chegada[1])*(chegada[0]-chegada[1]);
 		distancia = Math.sqrt(delta1+delta2);
 		
-		return distancia;
-		
+		return distancia;	
 	}
 	
 	public static ArrayList<Taxi_Model> getList()

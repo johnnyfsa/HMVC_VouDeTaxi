@@ -62,11 +62,12 @@ public class TaxiLandPage extends JFrame {
 				{
 					tglbtnVisible.setText("Visivel");
 					visivel=true;
-					Taxi_Controller.editar("", Login_Controller.getUsuario().getUsuario(), "").get(0);
+					Taxi_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).setVisible(visivel);
 				}
 				else 
 				{
 					tglbtnVisible.setText("Invisivel");
+					Taxi_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).setVisible(visivel);
 					visivel=false;
 				}
 				
