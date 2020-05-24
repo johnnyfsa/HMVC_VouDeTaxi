@@ -101,5 +101,13 @@ public class Taxi_Model extends Pessoa_Fisica {
 	public void setTempoTotal(long tempoTotal) {
 		this.tempoTotal = tempoTotal;
 	}
+	public void addCorrida() 
+	{
+		totalCorridas++;
+	}
+	public void addTempo(long tempo) 
+	{
+		tempoTotal+=tempo;
+	}
 
 }
