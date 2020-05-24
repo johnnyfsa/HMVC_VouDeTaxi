@@ -3,7 +3,12 @@
 		"Nome":  "Momo",
 		"Usuario": "biscoito",
 		"Senha": "biscoito123",
-		"CPF": "12345"
+		"CPF": "12345",
+		"Cor do Carro": "preto",
+		"Modelo do Carro": "sedan creu",
+		"Placa do Carro": "COV1019",
+		"Localizacao": [10.234, 32.890],
+		"Pontuacao": 3.33
 	},
 	
 ]

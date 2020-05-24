@@ -90,17 +90,20 @@ public class LoginView extends JFrame {
 				switch(a) 
 				{
 				case 0:
-					JOptionPane.showMessageDialog(FrameController.getLoginView(),"parabens oracle");
+					JOptionPane.showMessageDialog(FrameController.getLoginView(),"Cadastro não encontrado no sistema. Ps: Parabéns Oracle!");
 					break;
 				case 1:
+					FrameController.resetFrames();
 					FrameController.getAdmLandPage().setVisible(true);
 					dispose();
 					break;
 				case 2:
+					FrameController.resetFrames();
 					FrameController.getTaxiLandPage().setVisible(true);
 					dispose();
 					break;
 				case 3:
+					FrameController.resetFrames();
 					FrameController.getClienteLandPage().setVisible(true);
 					dispose();
 					break;
@@ -111,6 +114,12 @@ public class LoginView extends JFrame {
 		panel_1.add(confirmBtn, "cell 0 0");
 		
 		cadastraBtn = new JButton("Cadastrar Conta");
+		cadastraBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrameController.getCadastroPickFrame().setVisible(true);
+				dispose();
+			}
+		});
 		panel_1.add(cadastraBtn, "cell 6 0");
 	}
 }

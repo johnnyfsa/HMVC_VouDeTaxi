@@ -1,6 +1,6 @@
 package control;
 
-import java.sql.Time;
+import java.time.LocalDateTime;
 
 import model.Corrida_Model;
 import model.Pessoa_Fisica;
@@ -31,7 +31,7 @@ public class Corrida_Controller
 		Taxi_Controller.adcionarCorrida(taxi, corrida_atual);
 	}
 	
-	public static void CriarCorrida(double[] partida, double[] chegada, Time horario) 
+	public static void CriarCorrida(double[] partida, double[] chegada, LocalDateTime horario) 
 	{
 		Pessoa_Fisica pessoa;
 		
@@ -41,6 +41,7 @@ public class Corrida_Controller
 		corrida_atual.calculaDistancia();
 		pessoa = (Pessoa_Fisica) Login_Controller.getUsuario();
 		corrida_atual.setCliente(pessoa);
+		corrida_atual.setHorario(horario);
 	}
 	
 	

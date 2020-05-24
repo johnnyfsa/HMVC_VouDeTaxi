@@ -45,6 +45,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	        }
 	        	
 	        jsonArray = (JSONArray) parser.parse(file);
+	        JSONArray localizacao;
 	        Iterator<JSONObject> externalIterator = jsonArray.iterator();
 	  
 	        while(externalIterator.hasNext()) 
@@ -58,9 +59,15 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	            aux.setCorCarro((String) jsonObject.get("Cor do Carro"));
 	            aux.setModeloCarro((String) jsonObject.get("Modelo do Carro"));
 	            aux.setPlaca((String) jsonObject.get("Placa do Carro"));
-	            aux.setLocalizacao((double[]) jsonObject.get("Localizacao"));
-	            aux.setPontuacao((float) jsonObject.get("Pontuacao"));
-	                
+	            aux.setPontuacao((Double) jsonObject.get("Pontuacao"));
+	            localizacao = (JSONArray) jsonObject.get("Localizacao");
+	            double[] darray = new double[2];
+	            for(int i =0; i<localizacao.size();i++) 
+	            {
+	            	darray[i] = (double)localizacao.get(i);
+	            }
+	            aux.setLocalizacao(darray);
+	            
 	            L.add(aux);
 	          }
 	       } 

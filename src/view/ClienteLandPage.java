@@ -6,22 +6,33 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+
+import control.Corrida_Controller;
+import control.FrameController;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
 
 public class ClienteLandPage extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField;
-	private JTextField textField_1;
+	private MaskFormatter data;
+	private MaskFormatter hora;
+	private MaskFormatter latitudeMask;
+	private MaskFormatter longitudeMask;
 
 
 	/**
@@ -64,11 +75,10 @@ public class ClienteLandPage extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(new MigLayout("", "[][][][][][][][][]", "[][]"));
 		
-		JButton generateRaceBtn = new JButton("Gerar Corrida");
-		panel_1.add(generateRaceBtn, "cell 6 1,growx");
+		
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(10, 109, 447, 98);
+		panel_2.setBounds(10, 119, 447, 98);
 		contentPane.add(panel_2);
 		panel_2.setLayout(new MigLayout("", "[][][75.00][52.00][70.00][][][][][grow][][grow]", "[][][]"));
 		
@@ -87,35 +97,55 @@ public class ClienteLandPage extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("Data");
 		panel_2.add(lblNewLabel_3, "cell 1 2");
 		
-		JFormattedTextField dateFtf = new JFormattedTextField();
+		
+		try {
+			 data = new MaskFormatter("##-##-####");
+			 hora = new MaskFormatter("##:##");
+			 longitudeMask = new MaskFormatter("#####");
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		JFormattedTextField dateFtf = new JFormattedTextField(data);
 		dateFtf.setEditable(false);
 		panel_2.add(dateFtf, "cell 2 2,growx");
 		
 		JLabel lblNewLabel_4 = new JLabel("Hora");
 		panel_2.add(lblNewLabel_4, "cell 3 2,alignx trailing");
 		
-		JFormattedTextField hourFtf = new JFormattedTextField();
+		JFormattedTextField hourFtf = new JFormattedTextField(hora);
 		hourFtf.setEditable(false);
 		panel_2.add(hourFtf, "cell 4 2,growx");
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 11, 312, 72);
+		panel_3.setBounds(10, 46, 312, 72);
 		contentPane.add(panel_3);
-		panel_3.setLayout(new MigLayout("", "[][grow]", "[][]"));
+		panel_3.setLayout(new MigLayout("", "[][80.00][][85.00,grow]", "[][][]"));
 		
 		JLabel lblNewLabel = new JLabel("Latitude");
 		panel_3.add(lblNewLabel, "cell 0 0,alignx trailing");
 		
-		textField = new JTextField();
-		panel_3.add(textField, "cell 1 0,alignx left");
-		textField.setColumns(10);
+		JFormattedTextField latitudeField = new JFormattedTextField(longitudeMask);
+		panel_3.add(latitudeField, "flowx,cell 1 0,growx");
+		
+		JLabel lblNewLabel_5 = new JLabel("Latitude");
+		panel_3.add(lblNewLabel_5, "cell 2 0,alignx trailing");
+		
+		JFormattedTextField latitudeField_1 = new JFormattedTextField(longitudeMask);
+		panel_3.add(latitudeField_1, "cell 3 0,growx");
 		
 		JLabel lblNewLabel_1 = new JLabel("Longitude");
 		panel_3.add(lblNewLabel_1, "cell 0 1,alignx trailing");
 		
-		textField_1 = new JTextField();
-		panel_3.add(textField_1, "cell 1 1,alignx left");
-		textField_1.setColumns(10);
+		JFormattedTextField longitudeField = new JFormattedTextField(longitudeMask);
+		panel_3.add(longitudeField, "cell 1 1,growx");
+		
+		JLabel lblNewLabel_5_1 = new JLabel("Longitude");
+		panel_3.add(lblNewLabel_5_1, "cell 2 1,alignx trailing");
+		
+		JFormattedTextField longitudeField_1 = new JFormattedTextField(longitudeMask);
+		panel_3.add(longitudeField_1, "cell 3 1,growx");
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(351, 333, 106, 41);
@@ -138,5 +168,81 @@ public class ClienteLandPage extends JFrame {
 				hourFtf.setEditable(true);
 			}
 		});
+		
+		JButton generateRaceBtn = new JButton("Gerar Corrida");
+		generateRaceBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double[] partida, chegada;
+				partida= new double[2];
+				chegada = new double[2];
+				String ltt1, ltt2, lgt1, lgt2;
+				
+				ltt1 = latitudeField.getText().replaceAll("\\D","");
+				ltt2 = latitudeField_1.getText().replaceAll("\\D","");
+				
+				lgt1 = longitudeField.getText().replaceAll("\\D","");
+				lgt2 = longitudeField.getText().replaceAll("\\D","");
+				
+				
+				if(ltt1.isEmpty() || ltt2.isEmpty()|| lgt1.isEmpty()|| lgt2.isEmpty()) 
+				{
+					JOptionPane.showMessageDialog(FrameController.getClienteLandPage(),"Campo Obrigatório Vazio");
+				}
+				else 
+				{
+					partida[0] = Double.parseDouble(latitudeField.getText());
+					partida[1] = Double.parseDouble(longitudeField.getText());
+					
+					chegada[0] = Double.parseDouble(latitudeField_1.getText());
+					chegada[1] = Double.parseDouble(longitudeField_1.getText());
+					
+					if(rdbtnNow.isSelected()) 
+					{
+						Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now());
+					}
+					else 
+					{
+						String data, hora;
+						data = dateFtf.getText();
+						hora = hourFtf.getText();
+						
+						String aux = data.replaceAll("\\D","");
+						String aux2 = hora.replaceAll("\\D","");
+						
+						if(aux.isEmpty()||aux2.isEmpty()) 
+						{
+							JOptionPane.showMessageDialog(FrameController.getClienteLandPage(),"Campo Obrigatório Vazio");
+						}
+						else 
+						{
+							String datahora = data + " " + hora;
+							DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+							LocalDateTime dateTime = LocalDateTime.parse(datahora, formatter);
+							long diferenca = Duration.between(LocalDateTime.now(),dateTime ).toMinutes();
+							if(diferenca<30) 
+							{
+								JOptionPane.showMessageDialog(FrameController.getClienteLandPage(),"Agendamentos só podem ser realizados com até 30 min de antecedência");
+							}
+						}
+					}
+				}
+				
+			}
+		});
+		panel_1.add(generateRaceBtn, "cell 6 1,growx");
+		
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(10, 11, 312, 24);
+		contentPane.add(panel_5);
+		panel_5.setLayout(new MigLayout("", "[][][][][]", "[]"));
+		
+		JLabel lblNewLabel_6 = new JLabel("Partida");
+		panel_5.add(lblNewLabel_6, "cell 0 0");
+		
+		JLabel lblNewLabel_7 = new JLabel("Chegada");
+		panel_5.add(lblNewLabel_7, "cell 4 0,alignx right");
+		
+		
+		
 	}
 }
