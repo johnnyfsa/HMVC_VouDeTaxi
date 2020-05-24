@@ -42,6 +42,7 @@ public class Corrida_Controller
 		pessoa = (Pessoa_Fisica) Login_Controller.getUsuario();
 		corrida_atual.setCliente(pessoa);
 		corrida_atual.setHorario(horario);
+		associarTaxi();
 	}
 	
 	

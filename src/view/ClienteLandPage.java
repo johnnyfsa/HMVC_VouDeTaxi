@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 
+import com.sun.glass.ui.Cursor;
+
 import control.Corrida_Controller;
 import control.FrameController;
 import net.miginfocom.swing.MigLayout;
@@ -171,6 +173,7 @@ public class ClienteLandPage extends JFrame {
 		
 		JButton generateRaceBtn = new JButton("Gerar Corrida");
 		generateRaceBtn.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				double[] partida, chegada;
 				partida= new double[2];
@@ -199,6 +202,7 @@ public class ClienteLandPage extends JFrame {
 					if(rdbtnNow.isSelected()) 
 					{
 						Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now());
+						FrameController.getWait().setVisible(true);
 					}
 					else 
 					{
@@ -222,6 +226,11 @@ public class ClienteLandPage extends JFrame {
 							if(diferenca<30) 
 							{
 								JOptionPane.showMessageDialog(FrameController.getClienteLandPage(),"Agendamentos só podem ser realizados com até 30 min de antecedência");
+							}
+							else 
+							{
+								Corrida_Controller.CriarCorrida(partida, chegada, dateTime);
+								FrameController.getWait().setVisible(true);
 							}
 						}
 					}

@@ -233,8 +233,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		}
 		catch(NullPointerException e) 
 		{
-			String g="Não há taxistas próximos disponíveis. Tente novamente mais tarde";
-			return null;
+			System.out.println("Não há taxistas próximos disponíveis. Tente novamente mais tarde");
 		}
 		
 		try 
@@ -254,10 +253,9 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		}
 		catch(NullPointerException e) 
 		{
-			String g="Não há taxistas próximos disponíveis. Tente novamente mais tarde";
-			return null;
+			System.out.println("Não há taxistas próximos disponíveis. Tente novamente mais tarde");
 		}
-		
+		return taxi;
 	}
 	
 	public static double calculaDistancia(double[] partida, double chegada[]) 

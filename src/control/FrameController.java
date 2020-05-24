@@ -9,6 +9,7 @@ import view.LoginView;
 import view.TaxiCadastro;
 import view.TaxiLandPage;
 import view.TaxiSearchFrame;
+import view.Wait;
 
 public class FrameController {
 	
@@ -22,6 +23,7 @@ public class FrameController {
 	private static TaxiCadastro taxiCadastro = new TaxiCadastro();
 	private static TaxiLandPage taxiLandPage = new TaxiLandPage();
 	private static TaxiSearchFrame taxiSearchFrame = new TaxiSearchFrame();
+	private static Wait wait = new Wait();
 
 	public static ActiveRaceFrame getActiveRaceFrame() {
 		return activeRaceFrame;
@@ -114,6 +116,14 @@ public class FrameController {
 
 	public static void setEditarClienteCadastro(ClienteCadastro editarClienteCadastro) {
 		FrameController.editarClienteCadastro = editarClienteCadastro;
+	}
+
+	public static Wait getWait() {
+		return wait;
+	}
+
+	public static void setWait(Wait wait) {
+		FrameController.wait = wait;
 	}
 
 }
