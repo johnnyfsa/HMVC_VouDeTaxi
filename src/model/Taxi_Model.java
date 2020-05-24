@@ -1,24 +1,22 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Taxi_Model extends Pessoa_Fisica {
 	
 	
 	private String ModeloCarro;
 	private String CorCarro;
 	private String Placa;
-	private ArrayList<Corrida_Model> Corridas;
 	private double pontuacao;
 	private double[] localizacao;
 	private boolean visible;
+	private int totalCorridas;
+	private long tempoTotal;
 	
 	public Taxi_Model() 
 	{
 		ModeloCarro= "";
 		CorCarro = "";
 		Placa = "";
-		Corridas = new ArrayList<Corrida_Model>();
 		pontuacao =0;
 		localizacao = new double[2];
 		visible = true;
@@ -32,7 +30,6 @@ public class Taxi_Model extends Pessoa_Fisica {
 		ModeloCarro= "";
 		CorCarro = "";
 		Placa = "";
-		Corridas = new ArrayList<Corrida_Model>();
 		pontuacao =0;
 		localizacao = new double[2];
 		visible = true;
@@ -55,12 +52,6 @@ public class Taxi_Model extends Pessoa_Fisica {
 	}
 	public void setPlaca(String placa) {
 		Placa = placa;
-	}
-	public ArrayList<Corrida_Model> getCorridas() {
-		return Corridas;
-	}
-	public void setCorridas(ArrayList<Corrida_Model> corridas) {
-		Corridas = corridas;
 	}
 
 
@@ -97,6 +88,18 @@ public class Taxi_Model extends Pessoa_Fisica {
 
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+	public int getTotalCorridas() {
+		return totalCorridas;
+	}
+	public void setTotalCorridas(int totalCorridas) {
+		this.totalCorridas = totalCorridas;
+	}
+	public long getTempoTotal() {
+		return tempoTotal;
+	}
+	public void setTempoTotal(long tempoTotal) {
+		this.tempoTotal = tempoTotal;
 	}
 
 }

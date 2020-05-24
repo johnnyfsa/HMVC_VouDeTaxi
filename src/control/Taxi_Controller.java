@@ -198,12 +198,13 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		
 	}
 	
-	public static void editar(Pessoa_Fisica cliente,String nome, String usuario, String senha, String cpf) 
+	public static void editar(String cpf,String nome, String usuario, String senha, String modelo, String cor, String placa, double pontuação, boolean visible ) 
 	{
-		cliente.setNome(nome);
-		cliente.setUsuario(usuario);
-		cliente.setSenha(senha);
-		cliente.setCpf(cpf);
+		Taxi_Model taxi = busca("","",cpf).get(0);
+		taxi.setNome(nome);
+		taxi.setUsuario(usuario);
+		taxi.setSenha(senha);
+		jsonWrite();
 	}
 	
 	public static void adcionarCorrida(Taxi_Model taxi, Corrida_Model corrida)

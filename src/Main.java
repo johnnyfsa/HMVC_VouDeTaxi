@@ -10,8 +10,6 @@ public class Main {
 		Taxi_Controller.jsonRead();
 		Adm_Controller.jsonRead();
 		FrameController.getLoginView().setVisible(true);
-		
-		 
 	}
 
 }

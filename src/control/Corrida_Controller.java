@@ -31,7 +31,7 @@ public class Corrida_Controller
 		Taxi_Controller.adcionarCorrida(taxi, corrida_atual);
 	}
 	
-	public static void CriarCorrida(double[] partida, double[] chegada, LocalDateTime horario) 
+	public static boolean CriarCorrida(double[] partida, double[] chegada, LocalDateTime horario) 
 	{
 		Pessoa_Fisica pessoa;
 		
@@ -43,6 +43,12 @@ public class Corrida_Controller
 		corrida_atual.setCliente(pessoa);
 		corrida_atual.setHorario(horario);
 		associarTaxi();
+		//não não houver um cpf é porque não há taxis visíveis, ou ninguém aceitou a corrida
+		if(corrida_atual.getTaxi().getCpf().isEmpty()) 
+		{
+			return false;
+		}
+		return true;
 	}
 	
 	

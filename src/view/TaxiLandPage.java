@@ -9,12 +9,18 @@ import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JToggleButton;
 import javax.swing.event.ChangeListener;
+
+import control.Cliente_Controller;
+import control.Login_Controller;
+import control.Taxi_Controller;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.JButton;
 
 public class TaxiLandPage extends JFrame {
 
 	private JPanel contentPane;
+	private boolean visivel = false;
 
 	/**
 	 * Launch the application.
@@ -49,9 +55,21 @@ public class TaxiLandPage extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new MigLayout("", "[]", "[]"));
 		
-		JToggleButton tglbtnVisible = new JToggleButton("Visivel");
+		JToggleButton tglbtnVisible = new JToggleButton("Invisivel");
 		tglbtnVisible.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
+				if(visivel==false) 
+				{
+					tglbtnVisible.setText("Visivel");
+					visivel=true;
+					Taxi_Controller.editar("", Login_Controller.getUsuario().getUsuario(), "").get(0);
+				}
+				else 
+				{
+					tglbtnVisible.setText("Invisivel");
+					visivel=false;
+				}
+				
 			}
 		});
 		panel.add(tglbtnVisible, "cell 0 0,growx");

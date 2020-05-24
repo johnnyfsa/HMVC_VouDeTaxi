@@ -8,7 +8,9 @@
 		"Modelo do Carro": "sedan creu",
 		"Placa do Carro": "COV1019",
 		"Localizacao": [10.234, 32.890],
-		"Pontuacao": 3.33
+		"Pontuacao": 3.33,
+		"Total de Corridas":10,
+		"Tempo Total":200
 	},
 	
 ]

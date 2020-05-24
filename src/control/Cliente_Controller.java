@@ -173,12 +173,13 @@ public class Cliente_Controller extends Usuario_Controller
 		
 	}
 	
-	public static void editar(Pessoa_Fisica cliente,String nome, String usuario, String senha, String cpf) 
+	public static void editar(String cpf,String nome, String usuario, String senha ) 
 	{
+		Pessoa_Fisica cliente = busca("","",cpf).get(0);
 		cliente.setNome(nome);
 		cliente.setUsuario(usuario);
 		cliente.setSenha(senha);
-		cliente.setCpf(cpf);
+		jsonWrite();
 	}
 	
 	public static ArrayList<Pessoa_Fisica> getList()

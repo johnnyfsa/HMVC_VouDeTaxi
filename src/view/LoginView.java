@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import net.miginfocom.swing.MigLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class LoginView extends JFrame {
 
@@ -25,9 +26,9 @@ public class LoginView extends JFrame {
 	private JTextField userTextField;
 	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
-	private JTextField pswdTextField;
 	private JButton confirmBtn;
 	private JButton cadastraBtn;
+	private JPasswordField pswdTextField;
 
 	/**
 	 * Launch the application.
@@ -60,7 +61,7 @@ public class LoginView extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(83, 21, 274, 151);
 		contentPane.add(panel);
-		panel.setLayout(new MigLayout("", "[grow][][][grow]", "[][][][]"));
+		panel.setLayout(new MigLayout("", "[259.00,grow][][][grow]", "[][][][]"));
 		
 		lblNewLabel = new JLabel("Usuario");
 		panel.add(lblNewLabel, "cell 0 0");
@@ -72,9 +73,8 @@ public class LoginView extends JFrame {
 		lblNewLabel_1 = new JLabel("Senha");
 		panel.add(lblNewLabel_1, "cell 0 2");
 		
-		pswdTextField = new JTextField();
+		pswdTextField = new JPasswordField();
 		panel.add(pswdTextField, "cell 0 3 4 1,growx");
-		pswdTextField.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(83, 197, 274, 34);

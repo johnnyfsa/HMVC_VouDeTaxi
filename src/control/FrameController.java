@@ -17,7 +17,7 @@ public class FrameController {
 	private static AdmLandPage admLandPage = new AdmLandPage();
 	private static CadastroPickFrame cadastroPickFrame = new CadastroPickFrame();
 	private static ClienteCadastro clienteCadastro = new ClienteCadastro(false);
-	private static ClienteCadastro editarClienteCadastro = new ClienteCadastro(true);
+	private static ClienteCadastro editarClienteCadastro;
 	private static ClienteLandPage clienteLandPage = new ClienteLandPage();
 	private static LoginView loginView = new LoginView();
 	private static TaxiCadastro taxiCadastro = new TaxiCadastro();
@@ -102,7 +102,6 @@ public class FrameController {
 		 admLandPage = new AdmLandPage();
 		 cadastroPickFrame = new CadastroPickFrame();
 		 clienteCadastro = new ClienteCadastro(false);
-		 editarClienteCadastro = new ClienteCadastro(true);
 		 clienteLandPage = new ClienteLandPage();
 		 loginView = new LoginView();
 		 taxiCadastro = new TaxiCadastro();
@@ -111,6 +110,7 @@ public class FrameController {
 	}
 
 	public static ClienteCadastro getEditarClienteCadastro() {
+		editarClienteCadastro = new ClienteCadastro();
 		return editarClienteCadastro;
 	}
 

@@ -68,6 +68,13 @@ public class ClienteLandPage extends JFrame {
 		panel.setLayout(new MigLayout("", "[][]", "[]"));
 		
 		JButton clienteEditBtn = new JButton("Minha Conta");
+		clienteEditBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FrameController.resetFrames();
+				FrameController.getEditarClienteCadastro().setVisible(true);
+				dispose();
+			}
+		});
 		panel.add(clienteEditBtn, "cell 1 0");
 		
 		JPanel panel_1 = new JPanel();
@@ -153,6 +160,13 @@ public class ClienteLandPage extends JFrame {
 		panel_4.setLayout(new MigLayout("", "[][]", "[]"));
 		
 		JButton btnNewButton_1 = new JButton("Logoff");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameController.resetFrames();
+				FrameController.getLoginView().setVisible(true);
+				dispose();
+			}
+		});
 		panel_4.add(btnNewButton_1, "cell 1 0");
 		
 		rdbtnNow.addActionListener(new ActionListener() {
@@ -199,8 +213,14 @@ public class ClienteLandPage extends JFrame {
 					
 					if(rdbtnNow.isSelected()) 
 					{
-						Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now());
-						FrameController.getWait().setVisible(true);
+						if(Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now())) 
+						{
+							FrameController.getActiveRaceFrame().setVisible(true);
+						}
+						else 
+						{
+							JOptionPane.showMessageDialog(FrameController.getClienteLandPage(),"Não há motoristas disponívis no momento, tente novamente mais tarde");
+						}
 					}
 					else 
 					{
@@ -227,8 +247,14 @@ public class ClienteLandPage extends JFrame {
 							}
 							else 
 							{
-								Corrida_Controller.CriarCorrida(partida, chegada, dateTime);
-								FrameController.getWait().setVisible(true);
+								if(Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now())) 
+								{
+									FrameController.getActiveRaceFrame().setVisible(true);
+								}
+								else 
+								{
+									JOptionPane.showMessageDialog(FrameController.getClienteLandPage(),"Não há motoristas disponívis no momento, tente novamente mais tarde");
+								}
 							}
 						}
 					}
