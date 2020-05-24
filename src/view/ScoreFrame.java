@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import control.Corrida_Controller;
+import control.FrameController;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
@@ -102,6 +103,9 @@ public class ScoreFrame extends JFrame {
 				{
 					Corrida_Controller.getCorrida().getTaxi().recebePonto(5);
 				}
+				
+				FrameController.getClienteLandPage().setVisible(true);
+				dispose();
 			}
 		});
 		panel_1.add(endBtn, "cell 3 0");

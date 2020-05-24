@@ -121,7 +121,8 @@ public class ActiveRaceFrame extends JFrame {
 		JButton arriveBtn = new JButton("Meu motorista chegou");
 		arriveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				FrameController.getScoreFrame().setVisible(true);
+				dispose();
 			}
 		});
 		panel_1.add(arriveBtn, "cell 7 0");

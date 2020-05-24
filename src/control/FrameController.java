@@ -1,11 +1,13 @@
 package control;
 
+import view.AceitaCorridaFrame;
 import view.ActiveRaceFrame;
 import view.AdmLandPage;
 import view.CadastroPickFrame;
 import view.ClienteCadastro;
 import view.ClienteLandPage;
 import view.LoginView;
+import view.ScoreFrame;
 import view.TaxiCadastro;
 import view.TaxiLandPage;
 import view.TaxiSearchFrame;
@@ -24,6 +26,8 @@ public class FrameController {
 	private static TaxiLandPage taxiLandPage = new TaxiLandPage();
 	private static TaxiSearchFrame taxiSearchFrame = new TaxiSearchFrame();
 	private static Wait wait = new Wait();
+	private static ScoreFrame scoreFrame = new ScoreFrame();
+	private static AceitaCorridaFrame aceitaCorridaFrame;
 
 	public static ActiveRaceFrame getActiveRaceFrame() {
 		return activeRaceFrame;
@@ -126,4 +130,16 @@ public class FrameController {
 		FrameController.wait = wait;
 	}
 
+	public static ScoreFrame getScoreFrame() {
+		return scoreFrame;
+	}
+
+	public static void setScoreFrame(ScoreFrame scoreFrame) {
+		FrameController.scoreFrame = scoreFrame;
+	}
+
+	public static void iniciaCorrida()
+	{
+		aceitaCorridaFrame = new AceitaCorridaFrame();
+	}
 }
