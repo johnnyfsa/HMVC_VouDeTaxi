@@ -10,7 +10,9 @@ public class Taxi_Model extends Pessoa_Fisica {
 	private double[] localizacao;
 	private boolean visible;
 	private int totalCorridas;
+	private int totalCorridasProgramadas;
 	private long tempoTotal;
+	private long tempoProgramada;
 	
 	public Taxi_Model() 
 	{
@@ -118,6 +120,18 @@ public class Taxi_Model extends Pessoa_Fisica {
 	public void recebePonto(double ponto) 
 	{
 		this.pontuacao += ponto/totalCorridas;
+	}
+	public int getTotalCorridasProgramadas() {
+		return totalCorridasProgramadas;
+	}
+	public void setTotalCorridasProgramadas(int totalCorridasProgramadas) {
+		this.totalCorridasProgramadas = totalCorridasProgramadas;
+	}
+	public long getTempoProgramada() {
+		return tempoProgramada;
+	}
+	public void setTempoProgramada(long tempoProgramada) {
+		this.tempoProgramada = tempoProgramada;
 	}
 	
 	
