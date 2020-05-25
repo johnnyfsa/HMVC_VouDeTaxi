@@ -126,7 +126,15 @@ public class TaxiCadastro extends JFrame {
 		JButton confirmBtn = new JButton("Confirmar");
 		confirmBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(Taxi_Controller.busca("", usuarioTF.getText(), cpfTF.getText()).isEmpty())
+				if(nomeTF.getText().isEmpty()|| cpfTF.getText().isEmpty()|| usuarioTF.getText().isEmpty()|| senhaTF.getText().isEmpty()|| csenhaTF.getText().isEmpty()) 
+				{
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Campo obrigatário em branco");
+				}
+				else if(placaTF.getText().isEmpty() || modeloTF.getText().isEmpty() || corTF.getText().isEmpty()) 
+				{
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Campo obrigatário em branco");
+				}
+				else if(Taxi_Controller.busca("", usuarioTF.getText(), cpfTF.getText()).isEmpty())
 				{
 					Taxi_Controller.adicionar(nomeTF.getText(), usuarioTF.getText(), senhaTF.getText(), cpfTF.getText());
 					JOptionPane.showMessageDialog(FrameController.getTaxiCadastro(),"Cadastro de taxista efetuado com sucesso");
