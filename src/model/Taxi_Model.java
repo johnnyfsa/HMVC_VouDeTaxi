@@ -1,5 +1,7 @@
 package model;
 
+import control.Corrida_Controller;
+
 public class Taxi_Model extends Pessoa_Fisica {
 	
 	
@@ -22,6 +24,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		pontuacao =0;
 		totalCorridas=0;
 		tempoTotal = 0;
+		tempoProgramada = 0;
 		localizacao = new double[2];
 		visible = true;
 		
@@ -37,6 +40,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		pontuacao =0;
 		totalCorridas=0;
 		tempoTotal = 0;
+		tempoProgramada = 0;
 		localizacao = new double[2];
 		visible = true;
 	}
@@ -114,7 +118,11 @@ public class Taxi_Model extends Pessoa_Fisica {
 	}
 	public void addTempo(long tempo) 
 	{
-		tempoTotal+=tempo;
+		if(Corrida_Controller.getCorrida().isProgramada()) 
+		{
+			tempoProgramada += tempo;
+		}
+		else {tempoTotal+=tempo;}
 	}
 	
 	public void recebePonto(double ponto) 
