@@ -64,6 +64,12 @@ public class AdmLandPage extends JFrame {
 		panel.add(cadastraTaxiBtn, "cell 0 1,growx,aligny center");
 		
 		JButton buscaTaxiBtn = new JButton("Buscar Taxista");
+		buscaTaxiBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameController.getTaxiSearchFrame().setVisible(true);
+				dispose();
+			}
+		});
 		panel.add(buscaTaxiBtn, "cell 0 2,growx");
 		
 		JButton relatorioGeralBtn = new JButton("Exibir Relatorio Geral");

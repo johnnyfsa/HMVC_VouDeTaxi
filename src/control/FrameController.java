@@ -7,6 +7,7 @@ import view.AdmLandPage;
 import view.CadastroPickFrame;
 import view.ClienteCadastro;
 import view.ClienteLandPage;
+import view.EditarTaxi;
 import view.LoginView;
 import view.ScoreFrame;
 import view.TaxiCadastro;
@@ -30,6 +31,7 @@ public class FrameController {
 	private static ScoreFrame scoreFrame = new ScoreFrame();
 	private static AceitaCorridaFrame aceitaCorridaFrame;
 	private static AdmEditFrame admEditFrame;
+	private static EditarTaxi editarTaxi;
 
 	public static ActiveRaceFrame getActiveRaceFrame() {
 		activeRaceFrame = new ActiveRaceFrame();
@@ -160,5 +162,13 @@ public class FrameController {
 
 	public static void setAdmEditFrame(AdmEditFrame admEditFrame) {
 		FrameController.admEditFrame = admEditFrame;
+	}
+
+	public static EditarTaxi getEditarTaxi() {
+		return editarTaxi;
+	}
+
+	public static void setEditarTaxi(EditarTaxi editarTaxi) {
+		FrameController.editarTaxi = editarTaxi;
 	}
 }

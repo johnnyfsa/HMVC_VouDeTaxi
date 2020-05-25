@@ -16,11 +16,13 @@ import org.json.simple.parser.ParseException;
 import Randomico.aceitaRandom;
 import model.Corrida_Model;
 import model.Pessoa_Fisica;
+import model.TaxiTableModel;
 import model.Taxi_Model;
 
 public class Taxi_Controller extends Usuario_Controller
 {
 private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
+private static TaxiTableModel taxiTableModel = new TaxiTableModel();
 	
 	
 	
@@ -206,12 +208,15 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 		
 	}
 	
-	public static void editar(String cpf,String nome, String usuario, String senha, String modelo, String cor, String placa, double pontuacao, boolean visible ) 
+	public static void editar(String cpf,String nome, String usuario, String senha, String modelo, String cor, String placa ) 
 	{
 		Taxi_Model taxi = busca("","",cpf).get(0);
 		taxi.setNome(nome);
 		taxi.setUsuario(usuario);
 		taxi.setSenha(senha);
+		taxi.setModeloCarro(modelo);
+		taxi.setCorCarro(cor);
+		taxi.setPlaca(placa);
 		jsonWrite();
 	}
 	
@@ -304,4 +309,18 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	{
 		return L;
 	}
+
+	public static TaxiTableModel getTaxiTableModel() {
+		return taxiTableModel;
+	}
+
+	public static void setTaxiTableModel(TaxiTableModel taxiTableModel) {
+		Taxi_Controller.taxiTableModel = taxiTableModel;
+	}
+	
+	public static void fillTableModel(ArrayList<Taxi_Model> L) 
+	{
+		taxiTableModel.fillData(L);
+	}
+	
 }

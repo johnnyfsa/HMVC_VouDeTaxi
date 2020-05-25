@@ -148,6 +148,12 @@ public class TaxiCadastro extends JFrame {
 		panel_1.add(confirmBtn, "cell 0 0,alignx left,aligny top");
 		
 		JButton cancelBtn = new JButton("Cancelar");
+		cancelBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameController.getAdmLandPage().setVisible(true);
+				dispose();
+			}
+		});
 		panel_1.add(cancelBtn, "cell 9 0,alignx left,aligny top");
 		
 		

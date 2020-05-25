@@ -11,7 +11,6 @@ public class Taxi_Model extends Pessoa_Fisica {
 	private boolean visible;
 	private int totalCorridas;
 	private long tempoTotal;
-	private double pontuacaoTotal;
 	
 	public Taxi_Model() 
 	{
@@ -21,7 +20,6 @@ public class Taxi_Model extends Pessoa_Fisica {
 		pontuacao =0;
 		totalCorridas=0;
 		tempoTotal = 0;
-		pontuacaoTotal = 0;
 		localizacao = new double[2];
 		visible = true;
 		
@@ -37,7 +35,6 @@ public class Taxi_Model extends Pessoa_Fisica {
 		pontuacao =0;
 		totalCorridas=0;
 		tempoTotal = 0;
-		pontuacaoTotal = 0;
 		localizacao = new double[2];
 		visible = true;
 	}
@@ -123,15 +120,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		this.pontuacao += ponto/totalCorridas;
 	}
 	
-	public void setPontuacaoTotal(double pontuacaoTotal) 
-	{
-		this.pontuacaoTotal = pontuacaoTotal;
-	}
 	
-	public double getPontuacaoTotal() 
-	{
-		return pontuacaoTotal;
-	}
 	
 	
 	

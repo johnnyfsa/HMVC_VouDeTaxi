@@ -14,6 +14,7 @@ public class Corrida_Model {
 	private boolean status;
 	private int identificador;
 	private float avaliacao;
+	private boolean programada;
 	private long tempo; // o tempo t� sendo gerado em minutos nesse caso, se a corrida durar horas, a gente vai precisar fazer uma convers�o
 	
 	public Corrida_Model() 
@@ -112,5 +113,13 @@ public class Corrida_Model {
 		delta2 = (chegada[0]-chegada[1])*(chegada[0]-chegada[1]);
 		distancia = Math.sqrt(delta1+delta2);
 		
+	}
+
+	public boolean isProgramada() {
+		return programada;
+	}
+
+	public void setProgramada(boolean programada) {
+		this.programada = programada;
 	}
 }
