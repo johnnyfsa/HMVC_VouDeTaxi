@@ -68,6 +68,15 @@ public class Corrida_Controller
 	
 	public static void reset() 
 	{
+		for (int i = 0; i < Taxi_Controller.getList().size(); i++) {
+			if(Taxi_Controller.getList().get(i).getUsuario().equals(corrida_atual.getTaxi().getUsuario())) 
+			{
+				corrida_atual.getTaxi().setLocalizacao(corrida_atual.getChegada());
+				Taxi_Controller.getList().set(i, corrida_atual.getTaxi());
+			}
+			break;
+		}
+		Taxi_Controller.jsonWrite();
 		corrida_atual = new Corrida_Model();
 	}
 	

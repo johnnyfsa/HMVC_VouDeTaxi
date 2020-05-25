@@ -102,6 +102,9 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
         	JSONObject jsonObject = new JSONObject();
         	Taxi_Model aux = new Taxi_Model();
         	aux = taxiIterator.next();
+        	JSONArray array = new JSONArray();
+        	array.add(aux.getLocalizacao()[0]);
+        	array.add(aux.getLocalizacao()[1]);
         	
         	//Armazena dados em um Objeto JSON
         	jsonObject.put("Usuario", aux.getUsuario());
@@ -111,7 +114,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
             jsonObject.put("Cor do Carro", aux.getCorCarro());
             jsonObject.put("Modelo do Carro", aux.getModeloCarro());
             jsonObject.put("Placa do Carro", aux.getPlaca());
-            jsonObject.put("Localizacao", aux.getLocalizacao());
+            jsonObject.put("Localizacao", array);
             jsonObject.put("Pontuacao", aux.getPontuacao());
             arrJson.add(jsonObject);
         }
