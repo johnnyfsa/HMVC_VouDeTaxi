@@ -67,8 +67,8 @@ public class TaxiSearchFrame extends JFrame {
 		contentPane_1.add(scrollPane);
 		
 		Taxi_Controller.fillTableModel(Taxi_Controller.getList());
-		//table = new JTable(Taxi_Controller.getTaxiTableModel());
-		table = new JTable();
+		table = new JTable(Taxi_Controller.getTaxiTableModel());
+		//table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		textField = new JTextField();

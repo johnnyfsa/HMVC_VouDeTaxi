@@ -121,6 +121,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 		if(Corrida_Controller.getCorrida().isProgramada()) 
 		{
 			tempoProgramada += tempo;
+			tempoTotal += tempo;
 		}
 		else {tempoTotal+=tempo;}
 	}

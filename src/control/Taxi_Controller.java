@@ -67,6 +67,8 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
 	            aux.setPlaca((String) jsonObject.get("Placa do Carro"));
 	            aux.setPontuacao((Double) jsonObject.get("Pontuacao"));
 	            corrida = (Long) jsonObject.get("Corridas");
+	            corrida = (Long) jsonObject.get("Tempo total");
+	            corrida = (Long) jsonObject.get("Tempo programado");
 	            aux.setTotalCorridas(corrida.intValue());
 	            localizacao = (JSONArray) jsonObject.get("Localizacao");
 	            double[] darray = new double[2];
@@ -123,6 +125,8 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
             jsonObject.put("Localizacao", array);
             jsonObject.put("Pontuacao", aux.getPontuacao());
             jsonObject.put("Corridas", aux.getTotalCorridas());
+            jsonObject.put("Tempo total", aux.getTotalCorridas());
+            jsonObject.put("Tempo programado", aux.getTotalCorridas());
             arrJson.add(jsonObject);
         }
          

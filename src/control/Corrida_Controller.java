@@ -69,6 +69,9 @@ public class Corrida_Controller
 	public static void reset() 
 	{
 		//corrida_atual.getTaxi().addCorrida();
+		corrida_atual.calculaTempo(LocalDateTime.now());
+		corrida_atual.getTaxi().addTempo(corrida_atual.getTempo());
+		
 		for (int i = 0; i < Taxi_Controller.getList().size(); i++) {
 			if(Taxi_Controller.getList().get(i).getUsuario().equals(corrida_atual.getTaxi().getUsuario())) 
 			{
@@ -83,6 +86,7 @@ public class Corrida_Controller
 	
 	public static void aceitaCorrida(boolean aceita) 
 	{
+		
 		corrida_atual.setStatus(aceita);
 		corrida_atual.setTaxi((Taxi_Model)Login_Controller.getUsuario());
 		

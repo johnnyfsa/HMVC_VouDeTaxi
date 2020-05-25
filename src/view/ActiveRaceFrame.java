@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.awt.event.ActionEvent;
 
 public class ActiveRaceFrame extends JFrame {
@@ -121,6 +122,7 @@ public class ActiveRaceFrame extends JFrame {
 		JButton arriveBtn = new JButton("Meu motorista chegou");
 		arriveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Corrida_Controller.getCorrida().setHorario(LocalDateTime.now());
 				FrameController.getScoreFrame().setVisible(true);
 				dispose();
 			}

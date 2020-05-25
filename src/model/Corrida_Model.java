@@ -104,6 +104,7 @@ public class Corrida_Model {
 	{
 		long diferenca = Duration.between(agora, horario).toMinutes();
 		tempo = diferenca;
+	
 	}
 	
 	public void calculaDistancia() 

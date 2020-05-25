@@ -58,7 +58,7 @@ public class EditarTaxi extends JFrame {
 	
 	public EditarTaxi(String cpf) {
 
-
+		long totalTempo = Taxi_Controller.busca("", "", cpf).get(0).getTempoTotal();
 		String nome, usuario, senha, modelo, cor, placa;
 		int total;
 		total = Taxi_Controller.busca("", "", cpf).get(0).getTotalCorridas();
@@ -68,6 +68,7 @@ public class EditarTaxi extends JFrame {
 		modelo = Taxi_Controller.busca("", "", cpf).get(0).getModeloCarro();
 		cor = Taxi_Controller.busca("", "", cpf).get(0).getCorCarro();
 		placa = Taxi_Controller.busca("", "", cpf).get(0).getPlaca();
+		
 		
 		setTitle("Editar Taxi");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -223,7 +224,7 @@ JButton confirmBtn = new JButton("Confirmar");
 		panel.add(corridaTf, "cell 1 8,growx");
 		corridaTf.setColumns(10);
 		corridaTf.setText(" "+total);
-		corridaTf.setEnabled(false);
+		corridaTf.setEditable(false);
 		
 		JLabel lblNewLabel_9 = new JLabel("Tempo Total das Corridas");
 		panel.add(lblNewLabel_9, "cell 0 9,alignx trailing");
@@ -231,8 +232,8 @@ JButton confirmBtn = new JButton("Confirmar");
 		tempoTf = new JTextField();
 		panel.add(tempoTf, "cell 1 9,growx");
 		tempoTf.setColumns(10);
-		tempoTf.setText("");
-		tempoTf.setEnabled(false);
+		tempoTf.setText("" + totalTempo);
+		tempoTf.setEditable(false);
 		
 		
 		
