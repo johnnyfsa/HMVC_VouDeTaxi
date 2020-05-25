@@ -52,6 +52,8 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	  
 	        while(externalIterator.hasNext()) 
 	        {
+	        	Long corrida = new Long(0);
+	        	
 	            Taxi_Model aux = new Taxi_Model();
 	            jsonObject = externalIterator.next();
 	            aux.setNome((String) jsonObject.get("Nome"));
@@ -62,6 +64,8 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
 	            aux.setModeloCarro((String) jsonObject.get("Modelo do Carro"));
 	            aux.setPlaca((String) jsonObject.get("Placa do Carro"));
 	            aux.setPontuacao((Double) jsonObject.get("Pontuacao"));
+	            corrida = (Long) jsonObject.get("Corridas");
+	            aux.setTotalCorridas(corrida.intValue());
 	            localizacao = (JSONArray) jsonObject.get("Localizacao");
 	            double[] darray = new double[2];
 	            for(int i =0; i<localizacao.size();i++) 
@@ -116,6 +120,7 @@ private static ArrayList<Taxi_Model> L = new ArrayList<Taxi_Model>();
             jsonObject.put("Placa do Carro", aux.getPlaca());
             jsonObject.put("Localizacao", array);
             jsonObject.put("Pontuacao", aux.getPontuacao());
+            jsonObject.put("Corridas", aux.getTotalCorridas());
             arrJson.add(jsonObject);
         }
          

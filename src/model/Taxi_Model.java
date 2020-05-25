@@ -19,6 +19,9 @@ public class Taxi_Model extends Pessoa_Fisica {
 		CorCarro = "";
 		Placa = "";
 		pontuacao =0;
+		totalCorridas=0;
+		tempoTotal = 0;
+		pontuacaoTotal = 0;
 		localizacao = new double[2];
 		visible = true;
 		
@@ -32,6 +35,9 @@ public class Taxi_Model extends Pessoa_Fisica {
 		CorCarro = "";
 		Placa = "";
 		pontuacao =0;
+		totalCorridas=0;
+		tempoTotal = 0;
+		pontuacaoTotal = 0;
 		localizacao = new double[2];
 		visible = true;
 	}
@@ -64,6 +70,7 @@ public class Taxi_Model extends Pessoa_Fisica {
 
 
 	public void setPontuacao(double pontuacao) {
+		
 		this.pontuacao = pontuacao;
 	}
 
@@ -113,11 +120,18 @@ public class Taxi_Model extends Pessoa_Fisica {
 	
 	public void recebePonto(double ponto) 
 	{
-		pontuacaoTotal += ponto;
-		
-		pontuacao = pontuacaoTotal/totalCorridas;
+		this.pontuacao += ponto/totalCorridas;
 	}
 	
+	public void setPontuacaoTotal(double pontuacaoTotal) 
+	{
+		this.pontuacaoTotal = pontuacaoTotal;
+	}
+	
+	public double getPontuacaoTotal() 
+	{
+		return pontuacaoTotal;
+	}
 	
 	
 	

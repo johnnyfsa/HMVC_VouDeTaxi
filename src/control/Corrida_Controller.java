@@ -68,6 +68,7 @@ public class Corrida_Controller
 	
 	public static void reset() 
 	{
+		//corrida_atual.getTaxi().addCorrida();
 		for (int i = 0; i < Taxi_Controller.getList().size(); i++) {
 			if(Taxi_Controller.getList().get(i).getUsuario().equals(corrida_atual.getTaxi().getUsuario())) 
 			{
