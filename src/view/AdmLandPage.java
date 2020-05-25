@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import control.FrameController;
+import control.Taxi_Controller;
 
 import javax.swing.JButton;
 import java.awt.GridLayout;
@@ -49,9 +50,9 @@ public class AdmLandPage extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 188, 257);
+		panel.setBounds(10, 11, 257, 257);
 		contentPane.add(panel);
-		panel.setLayout(new MigLayout("", "[][]", "[][][][]"));
+		panel.setLayout(new MigLayout("", "[][]", "[][][][][]"));
 		
 		JButton cadastraTaxiBtn = new JButton("Cadastrar Taxista");
 		cadastraTaxiBtn.addActionListener(new ActionListener() {
@@ -72,8 +73,21 @@ public class AdmLandPage extends JFrame {
 		});
 		panel.add(buscaTaxiBtn, "cell 0 2,growx");
 		
-		JButton relatorioGeralBtn = new JButton("Exibir Relatorio Geral");
+		JButton relatorioGeralBtn = new JButton("Gerar Relatorio Geral");
+		relatorioGeralBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Taxi_Controller.gerarRelatorioGeral();
+			}
+		});
 		panel.add(relatorioGeralBtn, "cell 0 3,growx");
+		
+		JButton relatorioProg = new JButton("Gerar Relatorio de Corridas Programadas");
+		relatorioProg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Taxi_Controller.gerarRelatorioProgramadas();
+			}
+		});
+		panel.add(relatorioProg, "cell 0 4");
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(346, 11, 188, 93);

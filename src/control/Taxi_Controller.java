@@ -125,8 +125,8 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
             jsonObject.put("Localizacao", array);
             jsonObject.put("Pontuacao", aux.getPontuacao());
             jsonObject.put("Corridas", aux.getTotalCorridas());
-            jsonObject.put("Tempo total", aux.getTotalCorridas());
-            jsonObject.put("Tempo programado", aux.getTotalCorridas());
+            jsonObject.put("Tempo total", aux.getTempoTotal());
+            jsonObject.put("Tempo programado", aux.getTempoProgramada());
             arrJson.add(jsonObject);
         }
          
@@ -325,6 +325,92 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
 	public static void fillTableModel(ArrayList<Taxi_Model> L) 
 	{
 		taxiTableModel.fillData(L);
+	}
+	
+	public static void gerarRelatorioGeral() 
+	{
+			//Cria um Objeto JSON
+	        JSONArray arrJson = new JSONArray(); 
+	        FileWriter writeFile = null;
+	        Iterator<Taxi_Model> taxiIterator = L.iterator();
+
+	        while(taxiIterator.hasNext()) 
+	        {
+	        	JSONObject jsonObject = new JSONObject();
+	        	Taxi_Model aux = new Taxi_Model();
+	        	aux = taxiIterator.next();
+	        	JSONArray array = new JSONArray();
+	        	array.add(aux.getLocalizacao()[0]);
+	        	array.add(aux.getLocalizacao()[1]);
+	        	
+	        	//Armazena dados em um Objeto JSON
+	        	
+	            jsonObject.put("Nome", aux.getNome());
+	            jsonObject.put("CPF", aux.getCpf());
+	            jsonObject.put("Cor do Carro", aux.getCorCarro());
+	            jsonObject.put("Modelo do Carro", aux.getModeloCarro());
+	            jsonObject.put("Placa do Carro", aux.getPlaca());
+	            jsonObject.put("Pontuacao", aux.getPontuacao());
+	            jsonObject.put("Corridas", aux.getTotalCorridas());
+	            jsonObject.put("Tempo total", aux.getTempoTotal());
+	            arrJson.add(jsonObject);
+	        }
+	         
+	        try
+	        {
+	            writeFile = new FileWriter("Relatorio Geral.json");
+	            //Escreve no arquivo conteudo do Objeto JSON
+	            writeFile.write(arrJson.toJSONString());
+	            writeFile.close();
+	        }
+	        catch(IOException e)
+	        {
+	            e.printStackTrace();
+	        }
+		
+	}
+	
+	public static void gerarRelatorioProgramadas() 
+	{
+			//Cria um Objeto JSON
+	        JSONArray arrJson = new JSONArray(); 
+	        FileWriter writeFile = null;
+	        Iterator<Taxi_Model> taxiIterator = L.iterator();
+
+	        while(taxiIterator.hasNext()) 
+	        {
+	        	JSONObject jsonObject = new JSONObject();
+	        	Taxi_Model aux = new Taxi_Model();
+	        	aux = taxiIterator.next();
+	        	JSONArray array = new JSONArray();
+	        	array.add(aux.getLocalizacao()[0]);
+	        	array.add(aux.getLocalizacao()[1]);
+	        	
+	        	//Armazena dados em um Objeto JSON
+	        	
+	            jsonObject.put("Nome", aux.getNome());
+	            jsonObject.put("CPF", aux.getCpf());
+	            jsonObject.put("Cor do Carro", aux.getCorCarro());
+	            jsonObject.put("Modelo do Carro", aux.getModeloCarro());
+	            jsonObject.put("Placa do Carro", aux.getPlaca());
+	            jsonObject.put("Pontuacao", aux.getPontuacao());
+	            jsonObject.put("Total Programadas", aux.getTotalCorridasProgramadas());
+	            jsonObject.put("Tempo Programadas", aux.getTempoProgramada());
+	            arrJson.add(jsonObject);
+	        }
+	         
+	        try
+	        {
+	            writeFile = new FileWriter("Relatorio Corridas Programadas.json");
+	            //Escreve no arquivo conteudo do Objeto JSON
+	            writeFile.write(arrJson.toJSONString());
+	            writeFile.close();
+	        }
+	        catch(IOException e)
+	        {
+	            e.printStackTrace();
+	        }
+		
 	}
 	
 }

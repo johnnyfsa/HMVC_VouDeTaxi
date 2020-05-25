@@ -1,0 +1,22 @@
+[
+  {
+    "Cor do Carro": "preto",
+    "Corridas": 0,
+    "CPF": "12345",
+    "Modelo do Carro": "sedan creu",
+    "Nome": "Momo",
+    "Placa do Carro": "COV1019",
+    "Pontuacao": 0.0,
+    "Tempo total": 0
+  },
+  {
+    "Placa do Carro": "",
+    "Pontuacao": 0.0,
+    "Modelo do Carro": "",
+    "CPF": "80900685026",
+    "Cor do Carro": "",
+    "Corridas": 0,
+    "Nome": "maria",
+    "Tempo total": 0
+  }
+]
