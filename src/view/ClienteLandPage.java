@@ -213,7 +213,7 @@ public class ClienteLandPage extends JFrame {
 					
 					if(rdbtnNow.isSelected()) 
 					{
-						if(Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now())) 
+						if(Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now(), false)) 
 						{
 							FrameController.getActiveRaceFrame().setVisible(true);
 						}
@@ -247,7 +247,7 @@ public class ClienteLandPage extends JFrame {
 							}
 							else 
 							{
-								if(Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now())) 
+								if(Corrida_Controller.CriarCorrida(partida, chegada, LocalDateTime.now(), true)) 
 								{
 									FrameController.getActiveRaceFrame().setVisible(true);
 								}

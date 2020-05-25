@@ -112,13 +112,18 @@ public class Taxi_Model extends Pessoa_Fisica {
 	public void setTempoTotal(long tempoTotal) {
 		this.tempoTotal = tempoTotal;
 	}
-	public void addCorrida() 
+	public void addCorrida( boolean programada) 
 	{
-		totalCorridas++;
+		if(programada) 
+		{
+			totalCorridas++;
+			this.totalCorridasProgramadas++;
+		}
+		
 	}
-	public void addTempo(long tempo) 
+	public void addTempo(long tempo, boolean programada) 
 	{
-		if(Corrida_Controller.getCorrida().isProgramada()) 
+		if(programada) 
 		{
 			tempoProgramada += tempo;
 			tempoTotal += tempo;

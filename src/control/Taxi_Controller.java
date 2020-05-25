@@ -226,8 +226,8 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
 	
 	public static void adcionarCorrida(Taxi_Model taxi, Corrida_Model corrida)
 	{
-		taxi.addCorrida();
-		taxi.addTempo(corrida.getTempo());
+		taxi.addCorrida(corrida.isProgramada());
+		taxi.addTempo(corrida.getTempo(), corrida.isProgramada());
 	}
 	
 	public static Taxi_Model selecionaTaxi(double[] partida) 

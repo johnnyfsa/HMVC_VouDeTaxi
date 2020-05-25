@@ -32,7 +32,7 @@ public class Corrida_Controller
 		Taxi_Controller.adcionarCorrida(taxi, corrida_atual);
 	}
 	
-	public static boolean CriarCorrida(double[] partida, double[] chegada, LocalDateTime horario) 
+	public static boolean CriarCorrida(double[] partida, double[] chegada, LocalDateTime horario, boolean programada) 
 	{
 		Pessoa_Fisica pessoa;
 		
@@ -43,6 +43,7 @@ public class Corrida_Controller
 		pessoa = (Pessoa_Fisica) Login_Controller.getUsuario();
 		corrida_atual.setCliente(pessoa);
 		corrida_atual.setHorario(horario);
+		corrida_atual.setProgramada(programada);
 		associarTaxi();
 		//n�o n�o houver um cpf � porque n�o h� taxis vis�veis, ou ningu�m aceitou a corrida
 		if(corrida_atual.getTaxi().getCpf().isEmpty()) 
@@ -70,7 +71,7 @@ public class Corrida_Controller
 	{
 		//corrida_atual.getTaxi().addCorrida();
 		corrida_atual.calculaTempo(LocalDateTime.now());
-		corrida_atual.getTaxi().addTempo(corrida_atual.getTempo());
+		corrida_atual.getTaxi().addTempo(corrida_atual.getTempo(), corrida_atual.isProgramada());
 		
 		for (int i = 0; i < Taxi_Controller.getList().size(); i++) {
 			if(Taxi_Controller.getList().get(i).getUsuario().equals(corrida_atual.getTaxi().getUsuario())) 
