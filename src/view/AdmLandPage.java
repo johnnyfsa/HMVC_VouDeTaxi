@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import control.FrameController;
+
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
@@ -51,6 +54,13 @@ public class AdmLandPage extends JFrame {
 		panel.setLayout(new MigLayout("", "[][]", "[][][][]"));
 		
 		JButton cadastraTaxiBtn = new JButton("Cadastrar Taxista");
+		cadastraTaxiBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameController.resetFrames();
+				FrameController.getTaxiCadastro().setVisible(true);
+				dispose();
+			}
+		});
 		panel.add(cadastraTaxiBtn, "cell 0 1,growx,aligny center");
 		
 		JButton buscaTaxiBtn = new JButton("Buscar Taxista");
@@ -65,6 +75,12 @@ public class AdmLandPage extends JFrame {
 		panel_1.setLayout(new MigLayout("", "[][][][]", "[]"));
 		
 		JButton admAcountBtn = new JButton("Minha Conta");
+		admAcountBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrameController.getAdmEditFrame().setVisible(true);
+				dispose();
+			}
+		});
 		panel_1.add(admAcountBtn, "cell 3 0");
 		
 		JPanel panel_1_1 = new JPanel();
@@ -75,6 +91,8 @@ public class AdmLandPage extends JFrame {
 		JButton logoffBtn = new JButton("Logoff");
 		logoffBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				FrameController.getLoginView().setVisible(true);
+				dispose();
 			}
 		});
 		panel_1_1.add(logoffBtn, "cell 5 2");

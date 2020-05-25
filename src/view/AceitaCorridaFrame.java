@@ -12,6 +12,7 @@ import control.FrameController;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -98,10 +99,11 @@ public class AceitaCorridaFrame extends JFrame {
 		
 		
 		
-		JButton naoAceita = new JButton("Não Aceitar");
+		JButton naoAceita = new JButton("N\u00E3o Aceitar");
 		naoAceita.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Corrida_Controller.aceitaCorrida(false);
+				FrameController.resetFrames();
 				FrameController.getTaxiLandPage().setVisible(true);
 				dispose();
 				
@@ -117,8 +119,18 @@ public class AceitaCorridaFrame extends JFrame {
 				aceitar.setEnabled(false);
 				naoAceita.setEnabled(false);
 				
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				Corrida_Controller.reset();
+				
 				if(Corrida_Controller.getCorrida().getCliente().getNome().isEmpty()) 
 				{
+					JOptionPane.showMessageDialog(FrameController.getAceitaCorridaFrame(),"Sua corrida Foi finalizada");
+					FrameController.resetFrames();
 					FrameController.getTaxiLandPage().setVisible(true);
 					dispose();
 				}

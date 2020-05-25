@@ -1,7 +1,8 @@
-package control;
+ package control;
 
 import view.AceitaCorridaFrame;
 import view.ActiveRaceFrame;
+import view.AdmEditFrame;
 import view.AdmLandPage;
 import view.CadastroPickFrame;
 import view.ClienteCadastro;
@@ -15,7 +16,7 @@ import view.Wait;
 
 public class FrameController {
 	
-	private static ActiveRaceFrame activeRaceFrame = new ActiveRaceFrame();
+	private static ActiveRaceFrame activeRaceFrame;  
 	private static AdmLandPage admLandPage = new AdmLandPage();
 	private static CadastroPickFrame cadastroPickFrame = new CadastroPickFrame();
 	private static ClienteCadastro clienteCadastro = new ClienteCadastro(false);
@@ -28,8 +29,10 @@ public class FrameController {
 	private static Wait wait = new Wait();
 	private static ScoreFrame scoreFrame = new ScoreFrame();
 	private static AceitaCorridaFrame aceitaCorridaFrame;
+	private static AdmEditFrame admEditFrame;
 
 	public static ActiveRaceFrame getActiveRaceFrame() {
+		activeRaceFrame = new ActiveRaceFrame();
 		return activeRaceFrame;
 	}
 
@@ -102,7 +105,6 @@ public class FrameController {
 	}
 	public static void resetFrames() 
 	{
-		 activeRaceFrame = new ActiveRaceFrame();
 		 admLandPage = new AdmLandPage();
 		 cadastroPickFrame = new CadastroPickFrame();
 		 clienteCadastro = new ClienteCadastro(false);
@@ -140,6 +142,23 @@ public class FrameController {
 
 	public static void iniciaCorrida()
 	{
-		aceitaCorridaFrame = new AceitaCorridaFrame();
+		setAceitaCorridaFrame(new AceitaCorridaFrame());
+	}
+
+	public static AceitaCorridaFrame getAceitaCorridaFrame() {
+		return aceitaCorridaFrame;
+	}
+
+	public static void setAceitaCorridaFrame(AceitaCorridaFrame aceitaCorridaFrame) {
+		FrameController.aceitaCorridaFrame = aceitaCorridaFrame;
+	}
+
+	public static AdmEditFrame getAdmEditFrame() {
+		admEditFrame = new AdmEditFrame();
+		return admEditFrame;
+	}
+
+	public static void setAdmEditFrame(AdmEditFrame admEditFrame) {
+		FrameController.admEditFrame = admEditFrame;
 	}
 }

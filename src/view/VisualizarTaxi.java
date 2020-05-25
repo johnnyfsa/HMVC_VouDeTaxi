@@ -6,12 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.JButton;
 
-public class TaxiCadastro extends JFrame {
+public class VisualizarTaxi extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -30,7 +29,7 @@ public class TaxiCadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TaxiCadastro frame = new TaxiCadastro();
+					VisualizarTaxi frame = new VisualizarTaxi();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,86 +41,107 @@ public class TaxiCadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TaxiCadastro() {
-		setTitle("Cadastro de Taxista");
+	public VisualizarTaxi() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 407);
+		setBounds(100, 100, 452, 414);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setLayout(null);
 		panel.setBounds(10, 11, 414, 294);
 		contentPane.add(panel);
-		panel.setLayout(new MigLayout("", "[80px][229px]", "[20px][20px][20px][20px][20px][20px][20px][20px]"));
 		
 		JLabel lblNewLabel = new JLabel("Nome");
-		panel.add(lblNewLabel, "cell 0 0,alignx right,aligny center");
+		lblNewLabel.setBounds(60, 30, 27, 14);
+		panel.add(lblNewLabel);
 		
 		textField = new JTextField();
-		panel.add(textField, "cell 1 0,growx,aligny top");
 		textField.setColumns(10);
+		textField.setBounds(91, 27, 229, 20);
+		panel.add(textField);
 		
 		JLabel lblNewLabel_1 = new JLabel("CPF");
-		panel.add(lblNewLabel_1, "cell 0 1,alignx right,aligny center");
+		lblNewLabel_1.setBounds(68, 60, 19, 14);
+		panel.add(lblNewLabel_1);
 		
 		textField_1 = new JTextField();
-		panel.add(textField_1, "cell 1 1,growx,aligny top");
 		textField_1.setColumns(10);
+		textField_1.setBounds(91, 57, 229, 20);
+		panel.add(textField_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Usuario");
-		panel.add(lblNewLabel_2, "cell 0 2,alignx right,aligny center");
+		lblNewLabel_2.setBounds(51, 91, 36, 14);
+		panel.add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
-		panel.add(textField_2, "cell 1 2,growx,aligny top");
 		textField_2.setColumns(10);
+		textField_2.setBounds(91, 88, 229, 20);
+		panel.add(textField_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Senha");
-		panel.add(lblNewLabel_3, "cell 0 3,alignx right,aligny center");
+		lblNewLabel_3.setBounds(57, 121, 30, 14);
+		panel.add(lblNewLabel_3);
 		
 		textField_3 = new JTextField();
-		panel.add(textField_3, "cell 1 3,growx,aligny top");
 		textField_3.setColumns(10);
+		textField_3.setBounds(91, 118, 171, 20);
+		panel.add(textField_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Confirmar Senha");
-		panel.add(lblNewLabel_4, "cell 0 4,alignx left,aligny center");
+		lblNewLabel_4.setBounds(7, 152, 80, 14);
+		panel.add(lblNewLabel_4);
 		
 		textField_4 = new JTextField();
-		panel.add(textField_4, "cell 1 4,growx,aligny top");
 		textField_4.setColumns(10);
+		textField_4.setBounds(91, 149, 171, 20);
+		panel.add(textField_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Modelo de carro");
-		panel.add(lblNewLabel_5, "cell 0 5,alignx right,aligny center");
+		lblNewLabel_5.setBounds(10, 183, 77, 14);
+		panel.add(lblNewLabel_5);
 		
 		textField_5 = new JTextField();
-		panel.add(textField_5, "cell 1 5,growx,aligny top");
 		textField_5.setColumns(10);
+		textField_5.setBounds(91, 180, 229, 20);
+		panel.add(textField_5);
 		
 		JLabel lblNewLabel_6 = new JLabel("Cor");
-		panel.add(lblNewLabel_6, "cell 0 6,alignx right,aligny center");
+		lblNewLabel_6.setBounds(70, 213, 17, 14);
+		panel.add(lblNewLabel_6);
 		
 		textField_6 = new JTextField();
-		panel.add(textField_6, "cell 1 6,alignx left,aligny top");
 		textField_6.setColumns(10);
+		textField_6.setBounds(91, 210, 113, 20);
+		panel.add(textField_6);
 		
 		JLabel lblNewLabel_7 = new JLabel("Placa");
-		panel.add(lblNewLabel_7, "cell 0 7,alignx right,aligny center");
+		lblNewLabel_7.setBounds(62, 244, 25, 14);
+		panel.add(lblNewLabel_7);
 		
 		textField_7 = new JTextField();
-		panel.add(textField_7, "cell 1 7,alignx left,aligny top");
 		textField_7.setColumns(10);
+		textField_7.setBounds(91, 241, 113, 20);
+		panel.add(textField_7);
 		
 		JPanel panel_1 = new JPanel();
+		panel_1.setLayout(null);
 		panel_1.setBounds(10, 316, 414, 51);
 		contentPane.add(panel_1);
-		panel_1.setLayout(new MigLayout("", "[79px][75px][][][][][][][][]", "[23px]"));
 		
 		JButton confirmBtn = new JButton("Confirmar");
-		panel_1.add(confirmBtn, "cell 0 0,alignx left,aligny top");
+		confirmBtn.setBounds(7, 7, 79, 23);
+		panel_1.add(confirmBtn);
 		
 		JButton cancelBtn = new JButton("Cancelar");
-		panel_1.add(cancelBtn, "cell 9 0,alignx left,aligny top");
+		cancelBtn.setBounds(332, 7, 75, 23);
+		panel_1.add(cancelBtn);
+		
+		JButton deleteBtn = new JButton("Delete");
+		deleteBtn.setBounds(161, 7, 89, 23);
+		panel_1.add(deleteBtn);
 	}
 
 }

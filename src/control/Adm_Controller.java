@@ -37,7 +37,7 @@ public class Adm_Controller extends Usuario_Controller {
 	        else
 	        {
 	        	//o java n�o aceita resetar a filereader pra posi��o inicial, ent�o cria outro filereader
-	        	file = new FileReader("clientes.json");
+	        	file = new FileReader("adm.json");
 	        }
 	        	
 	        jsonArray = (JSONArray) parser.parse(file);
@@ -171,11 +171,13 @@ public class Adm_Controller extends Usuario_Controller {
 		
 	}
 	
-	public static void editar(Adm_Model cliente,String nome, String usuario, String senha, String cpf) 
+	public static void editar(String nome, String usuario, String senha) 
 	{
-		cliente.setNome(nome);
-		cliente.setUsuario(usuario);
-		cliente.setSenha(senha);
+		
+		L.get(0).setNome(nome);
+		L.get(0).setUsuario(usuario);
+		L.get(0).setSenha(senha);
+		jsonWrite();
 	}
 	
 	public static ArrayList<Adm_Model> getList()

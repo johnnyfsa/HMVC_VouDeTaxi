@@ -175,59 +175,69 @@ public class ClienteCadastro extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 414, 201);
 		contentPane.add(panel);
-		panel.setLayout(new MigLayout("", "[][grow][][][][][][][]", "[][][][][][][][][][][][][][][][][][][][][][]"));
 		
 		
 		String Nome = Cliente_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).getNome();
 		String CPF = Cliente_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).getCpf();
 		String Usuario =Cliente_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).getUsuario();
 		String Senha = Cliente_Controller.busca("", Login_Controller.getUsuario().getUsuario(), "").get(0).getSenha();
+		panel.setLayout(null);
 		
 		
 		
 		JLabel lblNewLabel = new JLabel("Nome");
-		panel.add(lblNewLabel, "cell 0 3,alignx trailing");
+		lblNewLabel.setBounds(60, 23, 27, 14);
+		panel.add(lblNewLabel);
 		
 		nomeTf = new JTextField();
-		panel.add(nomeTf, "cell 1 3 5 1,growx");
+		nomeTf.setBounds(91, 20, 229, 20);
+		panel.add(nomeTf);
 		nomeTf.setColumns(10);
 		nomeTf.setText(Nome);
 		
 		JLabel lblNewLabel_1 = new JLabel("CPF");
-		panel.add(lblNewLabel_1, "cell 0 5,alignx trailing");
+		lblNewLabel_1.setBounds(68, 51, 19, 14);
+		panel.add(lblNewLabel_1);
 		
 		cpfTf = new JTextField();
-		panel.add(cpfTf, "cell 1 5 5 1,growx");
+		cpfTf.setBounds(91, 48, 229, 20);
+		panel.add(cpfTf);
 		cpfTf.setColumns(10);
 		cpfTf.setText(CPF);
 		cpfTf.setEditable(false);
 		
 		JLabel lblNewLabel_2 = new JLabel("Usuario");
-		panel.add(lblNewLabel_2, "cell 0 7,alignx trailing");
+		lblNewLabel_2.setBounds(51, 79, 36, 14);
+		panel.add(lblNewLabel_2);
 		
 		userTf = new JTextField();
-		panel.add(userTf, "cell 1 7 5 1,growx");
+		userTf.setBounds(91, 76, 229, 20);
+		panel.add(userTf);
 		userTf.setColumns(10);
 		userTf.setText(Usuario);
 		
 		JLabel lblNewLabel_3 = new JLabel("Senha");
-		panel.add(lblNewLabel_3, "cell 0 9,alignx trailing");
+		lblNewLabel_3.setBounds(57, 107, 30, 14);
+		panel.add(lblNewLabel_3);
 		
 		passwordField = new JPasswordField();
-		panel.add(passwordField, "cell 1 9,growx");
+		passwordField.setBounds(91, 104, 113, 20);
+		panel.add(passwordField);
 		passwordField.setText(Senha);
 		JLabel lblNewLabel_4 = new JLabel("Confirmar Senha");
-		panel.add(lblNewLabel_4, "cell 0 11,alignx trailing");
+		lblNewLabel_4.setBounds(7, 135, 80, 14);
+		panel.add(lblNewLabel_4);
 		
 		confirmPswdField = new JPasswordField();
-		panel.add(confirmPswdField, "cell 1 11,growx");
+		confirmPswdField.setBounds(91, 132, 113, 20);
+		panel.add(confirmPswdField);
 		confirmPswdField.setText(Senha);
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(10, 223, 414, 51);
 		contentPane.add(panel_1);
-		panel_1.setLayout(new MigLayout("", "[][][][][][][][][]", "[]"));
 		
 		JButton confirmBtn = new JButton("Confirmar");
+		confirmBtn.setBounds(7, 7, 79, 23);
 		confirmBtn.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
@@ -271,9 +281,11 @@ public class ClienteCadastro extends JFrame {
 
 			}
 		});
-		panel_1.add(confirmBtn, "cell 0 0");
+		panel_1.setLayout(null);
+		panel_1.add(confirmBtn);
 		
 		JButton deleteBtn = new JButton("Delete");
+		deleteBtn.setBounds(177, 7, 63, 23);
 		deleteBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Cliente_Controller.remover(Nome, Usuario, CPF);
@@ -282,8 +294,9 @@ public class ClienteCadastro extends JFrame {
 				dispose();
 			}
 		});
-		panel_1.add(deleteBtn, "cell 4 0");
+		panel_1.add(deleteBtn);
 		JButton cancelBtn = new JButton("Cancelar");
+		cancelBtn.setBounds(331, 7, 75, 23);
 		cancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FrameController.resetFrames();
@@ -291,7 +304,7 @@ public class ClienteCadastro extends JFrame {
 				dispose();
 			}
 		});
-		panel_1.add(cancelBtn, "cell 8 0");
+		panel_1.add(cancelBtn);
 	}
 	
 	
