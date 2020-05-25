@@ -104,6 +104,8 @@ public class ScoreFrame extends JFrame {
 					Corrida_Controller.getCorrida().getTaxi().recebePonto(5);
 				}
 				
+				Corrida_Controller.reset();
+				
 				FrameController.getClienteLandPage().setVisible(true);
 				dispose();
 			}

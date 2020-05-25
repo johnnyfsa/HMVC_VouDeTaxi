@@ -44,7 +44,7 @@ public class Corrida_Controller
 		corrida_atual.setCliente(pessoa);
 		corrida_atual.setHorario(horario);
 		associarTaxi();
-		//não não houver um cpf é porque não há taxis visíveis, ou ninguém aceitou a corrida
+		//nï¿½o nï¿½o houver um cpf ï¿½ porque nï¿½o hï¿½ taxis visï¿½veis, ou ninguï¿½m aceitou a corrida
 		if(corrida_atual.getTaxi().getCpf().isEmpty()) 
 		{
 			return false;
@@ -71,5 +71,11 @@ public class Corrida_Controller
 		corrida_atual = new Corrida_Model();
 	}
 	
+	public static void aceitaCorrida(boolean aceita) 
+	{
+		corrida_atual.setStatus(aceita);
+		corrida_atual.setTaxi((Taxi_Model)Login_Controller.getUsuario());
+		
+	}
 			
 }
