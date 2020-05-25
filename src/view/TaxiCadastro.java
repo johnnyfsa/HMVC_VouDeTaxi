@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class TaxiCadastro extends JFrame {
 
@@ -23,11 +25,11 @@ public class TaxiCadastro extends JFrame {
 	private JTextField nomeTF;
 	private JTextField cpfTF;
 	private JTextField usuarioTF;
-	private JTextField senhaTF;
-	private JTextField csenhaTF;
 	private JTextField modeloTF;
 	private JTextField corTF;
 	private JTextField placaTF;
+	private JPasswordField senhaTF;
+	private JPasswordField csenhaTF;
 
 	/**
 	 * Launch the application.
@@ -60,7 +62,7 @@ public class TaxiCadastro extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 414, 294);
 		contentPane.add(panel);
-		panel.setLayout(new MigLayout("", "[80px][229px]", "[20px][20px][20px][20px][20px][20px][20px][20px]"));
+		panel.setLayout(new MigLayout("", "[80px][229px,grow]", "[20px][20px][20px][20px][20px][20px][20px][20px]"));
 		
 		JLabel lblNewLabel = new JLabel("Nome");
 		panel.add(lblNewLabel, "cell 0 0,alignx right,aligny center");
@@ -84,18 +86,16 @@ public class TaxiCadastro extends JFrame {
 		usuarioTF.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Senha");
-		panel.add(lblNewLabel_3, "cell 0 3,alignx right,aligny center");
+		panel.add(lblNewLabel_3, "cell 0 3,alignx trailing,aligny center");
 		
-		senhaTF = new JTextField();
-		panel.add(senhaTF, "cell 1 3,growx,aligny top");
-		senhaTF.setColumns(10);
+		senhaTF = new JPasswordField();
+		panel.add(senhaTF, "cell 1 3,growx");
 		
 		JLabel lblNewLabel_4 = new JLabel("Confirmar Senha");
-		panel.add(lblNewLabel_4, "cell 0 4,alignx left,aligny center");
+		panel.add(lblNewLabel_4, "cell 0 4,alignx trailing,aligny center");
 		
-		csenhaTF = new JTextField();
-		panel.add(csenhaTF, "cell 1 4,growx,aligny top");
-		csenhaTF.setColumns(10);
+		csenhaTF = new JPasswordField();
+		panel.add(csenhaTF, "cell 1 4,growx");
 		
 		JLabel lblNewLabel_5 = new JLabel("Modelo de carro");
 		panel.add(lblNewLabel_5, "cell 0 5,alignx right,aligny center");
@@ -131,6 +131,14 @@ public class TaxiCadastro extends JFrame {
 					Taxi_Controller.adicionar(nomeTF.getText(), usuarioTF.getText(), senhaTF.getText(), cpfTF.getText());
 					JOptionPane.showMessageDialog(FrameController.getTaxiCadastro(),"Cadastro de taxista efetuado com sucesso");
 				}
+				else if(!senhaTF.getText().equals(csenhaTF.getText())) 
+				{
+					JOptionPane.showMessageDialog(FrameController.getTaxiCadastro(),"Senha e confirmação não coincidem");
+				}
+				else if(!validaCpf(cpfTF.getText())) 
+				{
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"CPF inv�lido");
+				}
 				else 
 				{
 					JOptionPane.showMessageDialog(FrameController.getTaxiCadastro(),"Já existe um taxista com esses dados");
@@ -141,6 +149,65 @@ public class TaxiCadastro extends JFrame {
 		
 		JButton cancelBtn = new JButton("Cancelar");
 		panel_1.add(cancelBtn, "cell 9 0,alignx left,aligny top");
+		
+		
 	}
-
+	public boolean validaCpf(String CPF) 
+	{
+		
+		        // considera-se erro CPF's formados por uma sequencia de numeros iguais
+		        if (CPF.equals("00000000000") ||
+		            CPF.equals("11111111111") ||
+		            CPF.equals("22222222222") || CPF.equals("33333333333") ||
+		            CPF.equals("44444444444") || CPF.equals("55555555555") ||
+		            CPF.equals("66666666666") || CPF.equals("77777777777") ||
+		            CPF.equals("88888888888") || CPF.equals("99999999999") ||
+		            (CPF.length() != 11))
+		            return(false);
+		          
+		        char dig10, dig11;
+		        int sm, i, r, num, peso;
+		          
+		        // "try" - protege o codigo para eventuais erros de conversao de tipo (int)
+		        try {
+		        // Calculo do 1o. Digito Verificador
+		            sm = 0;
+		            peso = 10;
+		            for (i=0; i<9; i++) {              
+		        // converte o i-esimo caractere do CPF em um numero:
+		        // por exemplo, transforma o caractere '0' no inteiro 0         
+		        // (48 eh a posicao de '0' na tabela ASCII)         
+		            num = (int)(CPF.charAt(i) - 48); 
+		            sm = sm + (num * peso);
+		            peso = peso - 1;
+		            }
+		          
+		            r = 11 - (sm % 11);
+		            if ((r == 10) || (r == 11))
+		                dig10 = '0';
+		            else dig10 = (char)(r + 48); // converte no respectivo caractere numerico
+		          
+		        // Calculo do 2o. Digito Verificador
+		            sm = 0;
+		            peso = 11;
+		            for(i=0; i<10; i++) {
+		            num = (int)(CPF.charAt(i) - 48);
+		            sm = sm + (num * peso);
+		            peso = peso - 1;
+		            }
+		          
+		            r = 11 - (sm % 11);
+		            if ((r == 10) || (r == 11))
+		                 dig11 = '0';
+		            else dig11 = (char)(r + 48);
+		          
+		        // Verifica se os digitos calculados conferem com os digitos informados.
+		            if ((dig10 == CPF.charAt(9)) && (dig11 == CPF.charAt(10)))
+		                 return(true);
+		            else return(false);
+		                } catch (InputMismatchException erro) {
+		                return(false);
+		            }
+		        
+	}
 }

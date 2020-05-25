@@ -114,15 +114,15 @@ public class ClienteCadastro extends JFrame {
 				confirmar = confirmPswdField.getText();
 				if(nome.isEmpty()|| cpf.isEmpty()|| usuario.isEmpty()|| senha.isEmpty()|| confirmar.isEmpty()) 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Campo obrigatório em branco");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Campo obrigatï¿½rio em branco");
 				}
 				else if(!senha.equals(confirmar)) 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Senha e confirmação não coincidem");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Senha e confirmaï¿½ï¿½o nï¿½o coincidem");
 				}
 				else if(!validaCpf(cpf)) 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"CPF inválido");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"CPF invï¿½lido");
 				}
 				else if(Cliente_Controller.busca("", usuario, "").isEmpty() && Cliente_Controller.busca("", "", cpf).isEmpty()) 
 				{
@@ -135,7 +135,7 @@ public class ClienteCadastro extends JFrame {
 				}
 				else 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Cliente Já Cadastrado no sistema");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Cliente Jï¿½ Cadastrado no sistema");
 				}
 			}
 		});
@@ -251,15 +251,15 @@ public class ClienteCadastro extends JFrame {
 				confirmar = confirmPswdField.getText();
 				if(nome.isEmpty()|| cpf.isEmpty()|| usuario.isEmpty()|| senha.isEmpty()|| confirmar.isEmpty()) 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Campo obrigatório em branco");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Campo obrigatï¿½rio em branco");
 				}
 				else if(!senha.equals(confirmar)) 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Senha e confirmação não coincidem");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Senha e confirmaï¿½ï¿½o nï¿½o coincidem");
 				}
 				else if(!validaCpf(cpf)) 
 				{
-					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"CPF inválido");
+					JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"CPF invï¿½lido");
 				}
 				else if(Cliente_Controller.busca("", usuario, "").isEmpty()) 
 				{
@@ -275,7 +275,7 @@ public class ClienteCadastro extends JFrame {
 					}
 					else 
 					{
-						JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Cliente Já Cadastrado no sistema");
+						JOptionPane.showMessageDialog(FrameController.getClienteCadastro(),"Cliente Jï¿½ Cadastrado no sistema");
 					}
 				}
 
@@ -367,4 +367,5 @@ public class ClienteCadastro extends JFrame {
 		            }
 		        
 	}
+	
 }
