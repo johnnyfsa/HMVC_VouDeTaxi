@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
@@ -329,6 +330,11 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
 	
 	public static void gerarRelatorioGeral() 
 	{
+		
+		
+
+			L.sort(Comparator.comparing(Taxi_Model::getTempoTotal));
+					
 			//Cria um Objeto JSON
 	        JSONArray arrJson = new JSONArray(); 
 	        FileWriter writeFile = null;
@@ -372,6 +378,7 @@ private static TaxiTableModel taxiTableModel = new TaxiTableModel();
 	
 	public static void gerarRelatorioProgramadas() 
 	{
+		L.sort(Comparator.comparing(Taxi_Model::getTempoTotal));
 			//Cria um Objeto JSON
 	        JSONArray arrJson = new JSONArray(); 
 	        FileWriter writeFile = null;

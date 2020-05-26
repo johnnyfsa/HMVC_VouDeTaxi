@@ -1,0 +1,66 @@
+Vou de Taxi, um programa desenvolvido para a disciplina de arquitetura de software da UNIFACS 2020.1
+
+O sistema consiste em um simulador de corridas de taxi, em que o usuário pode logar como:
+Cliente (Um usuário interessado em contratar um motorista)
+Taxista
+ou Admnistrador(Usuário responsável pelo cadastro e manutenção de texistas)
+
+Ao iniciar o programa, você pode notar que existem os campos usuário e senha
+
+A rotina de autenticação do sistema possuim uma interface integrada, sendo assim, qualquer usuário
+das categorias supracitadas, pode logar utilizando seu usuário e senha.
+
+Clientes podem se cadastrar livremente na plataforma.
+Taxistas só podem ser cadastrados por intermédio de um admnistrador.
+Admnistrador é um usuário único.
+
+Ao acessar o sistema como cliente, é possível:
+
+ALTERAR SEUS DADOS
+SOLICITAR CORRIDA INSTANTANEAMENTE
+AGENDAR UMA CORRIDA
+
+Essas opções estão expecificadas na tela. 
+Alterando dados como cliente- O botão "Minha Conta" abrirá uma janela na qual o usuário terá uma 
+interface semelhante àquela utilizada no cadastro, essa, porém, é capaz de deletar a conta associada
+àquele cpf cadastrado, direcionando o usuário para a janela de autenticação.
+
+Solicitar corrida Instantanea - Essas corridas são sinalizadas com o RadioButton "Para Agora".
+Utilizando este botão, é possível iniciar uma corrida, visto que os campos de coordenadas
+de partida e chegada sejam preenchidos.
+
+Para fins didáticos e em respeito ao cronograma dado, foi utilizada uma abstração para o sistema de GPS
+normalmente utilizado em aplicativos de transporte.
+
+Para tal, foram utilizadas as variáveis Latitude e Longitude. Que, recebem, ambas, um número inteiro com
+cinco algarismos, nesse caso, para digitar o número cinco (5), é necessário inserir: 00005.
+
+Agendar corrida: Para agendar uma corrida, é necessário selecionar a opção "para depois" no painel correspondente
+o que habilitará os campos de data e hora. Sendo que não podem ser agendadas corridas com menos de 30 min de antecedência,
+de outro modo, o mais adequado seria pedir uma corrida instantânea.
+
+Após o agendamento, uma janela de confirmação aparecerá até que o motorista designado chegue no local. Ao finalizar a corrida
+o usuário deverá avaliar o motorista, dando a ele uma nota de 1 à 5.
+
+
+Para os taxistas, a interface é simplificada, nesse modo, ao realizar o login, o motorista pode decidir se mantem-se visível ou invisível
+para a plataforma. Para que assim, ele possa receber notificações de corridas.
+
+usando o programa como adm, o usuário terá uma gama de opções:
+
+PROCURAR TAXISTA
+GERAR RELATÓRIO GERAL
+GERAR RELATÓRIO DE AGENDAMENTOS
+
+Procurar taxista abrirá uma janela na qual o administrador poderá visualizar todos os taxistas listados, bem como procurá-los
+ de acordo com seu critério, usando um campo de busca. Podendo utilizar diferentes chaves de busca (cpf, Nome).
+Para interagir com os taxistas registrados, é necessário selecionar uma das linhas da tabela e acionar um dos botões adjacentes:
+EDITAR e REMOVER
+
+remover irá remover o taxista da plataforma, bem como da tabela de visualização.
+Editar, abrirá uma janela em que se pode ver informações individuais de cada motorista.
+
+Gerar Relatório geral irá construir um relatório em .json de todos os motoristas e suas corridas
+de nome "Relatorio Geral.json"
+
+Gerar Relatorio de Agendamentos irá gerar o arquivo: "Relatorio Corridas Programadas.json"

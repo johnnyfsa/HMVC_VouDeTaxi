@@ -1,1 +1,30 @@
-[{"Usuario":"biscoito","Placa do Carro":"COV1019","Pontuacao":0.0,"Senha":"biscoito123","Localizacao":[23.0,50.0],"Modelo do Carro":"sedan creu","CPF":"12345","Cor do Carro":"preto","Corridas":0, "Tempo total" : 0, "Tempo programado":0 ,"Nome":"Momo"},{"Usuario":"maria","Placa do Carro":"","Pontuacao":0.0,"Senha":"123","Localizacao":[0.0,0.0],"Modelo do Carro":"","CPF":"80900685026","Cor do Carro":"","Corridas":1,"Tempo total" : 0, "Tempo programado":0, "Nome":"maria"}]
+[
+  {
+    "Usuario": "usuario1",
+    "Placa do Carro": "COV1019",
+    "Pontuacao": 0.0,
+    "Senha": "usuario1",
+    "Localizacao": [ 23.0, 50.0 ],
+    "Modelo do Carro": "Classic",
+    "CPF": "25522692065",
+    "Cor do Carro": "preto",
+    "Corridas": 0,
+    "Tempo total": 0,
+    "Tempo programado": 0,
+    "Nome": "Momo"
+  },
+  {
+    "Usuario": "usuario2",
+    "Placa do Carro": "PKK9009",
+    "Pontuacao": 0.0,
+    "Senha": "usuario2",
+    "Localizacao": [ 0.0, 0.0 ],
+    "Modelo do Carro": "",
+    "CPF": "80900685026",
+    "Cor do Carro": "branco",
+    "Corridas": 0,
+    "Tempo total": 0,
+    "Tempo programado": 0,
+    "Nome": "maria"
+  }
+]

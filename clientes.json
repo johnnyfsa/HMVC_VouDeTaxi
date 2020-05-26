@@ -1,1 +1,20 @@
-[{"Usuario":"peido hemorragico","Senha":"tomarnocu","CPF":"04554231569","Nome":"joimar"},{"Usuario":"boquetaurus","Senha":"asd","CPF":"05588994558","Nome":"joao"},{"Usuario":"ana","Senha":"ana","CPF":"18144446534","Nome":"ana"}]
+[
+  {
+    "Usuario": "Cliente1",
+    "Senha": "Cliente1",
+    "CPF": "04554231569",
+    "Nome": "joimar"
+  },
+  {
+    "Usuario": "Cliente2",
+    "Senha": "Cliente2",
+    "CPF": "05588994558",
+    "Nome": "joao"
+  },
+  {
+    "Usuario": "Cliente3",
+    "Senha": "Cliente3",
+    "CPF": "03257491085",
+    "Nome": "ana"
+  }
+]
